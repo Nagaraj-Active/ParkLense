@@ -19,39 +19,15 @@ public class DSitePage
 	}
 	    
 	
-		@FindBy (xpath="//a[@href='/sites']//span")									      WebElement site_link;
-	    @FindBy (xpath="//div[@class='d-flex flex-wrap']/../h1")                          WebElement SitePageText;
-	    @FindBy (xpath="//input[@placeholder='Search By Name']")						  WebElement Search_field;
-	    @FindBy(xpath="(//div[@class='table-responsive']//tbody/tr)[1]/td[1]")           WebElement Site_first_record_id;
+		//@FindBy (xpath="//a[@href='/sites']//span")									      WebElement site_link;
+	    //@FindBy (xpath="//div[@class='d-flex flex-wrap']/../h1")                          WebElement SitePageText;
+	    //@FindBy (xpath="//input[@placeholder='Search By Name']")						  WebElement Search_field;
+	    //@FindBy(xpath="(//div[@class='table-responsive']//tbody/tr)[1]/td[1]")           WebElement Site_first_record_id;
 		@FindBy (xpath="(//div[@class='dropdown-toggle'])[1]")                            WebElement Client_drop_down;
 		@FindBy (xpath="(//div[@class='dropdown-toggle'])[2]")							  WebElement Status_drop_down;
 	    @FindBy (xpath="//button[@class='btn-i-gray3 btn-icon-text commangap-3']")        WebElement Reset_button;
 	    @FindBy (xpath="//select[@class='form-select form-select ms-2 me-2']")            WebElement page_drop_down;
 
-        
-public void ClickOnSiteLink()
-{
-     site_link.click();	
-}
-public String VerifySiteText()
-{
-     String SiteText=SitePageText.getText();
-     return SiteText;
-}
-
-public void SearchSiteBySearchField(String id) throws AWTException, InterruptedException
-{
-    Search_field.sendKeys(id);
-    Thread.sleep(4000);
-    Robot rt=new Robot();
-	rt.keyPress(KeyEvent.VK_ENTER);
-	rt.keyRelease(KeyEvent.VK_ENTER);
-}
-public String VerifySiteById()
-{
-    String id=Site_first_record_id.getText();
-    return id;
-}
 public void ClientDropDown()
 {
 	Client_drop_down.click();

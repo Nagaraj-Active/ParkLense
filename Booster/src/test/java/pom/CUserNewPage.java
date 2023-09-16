@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class CUserNewPage 
 {
@@ -21,14 +22,25 @@ public class CUserNewPage
 	    @FindBy(xpath="//input[@placeholder='Mobile']")                                   WebElement mobile;
 	    @FindBy(xpath="//input[@placeholder='Email']")                                    WebElement Email; 
         @FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[2]")                WebElement Role;
-        @FindBy(xpath="//input[@aria-autocomplete='list']")                               WebElement Lot_drop;
+        public void SelectRole()
+        {
+        	
+        	Select sel=new Select(Role);
+        	sel.selectByVisibleText("MANAGER");
+        }
+        @FindBy(xpath="//div[@class='ng-select-container']/span")                               WebElement selectLot;
+        @FindBy(xpath="//input[@id='item-1']")                                                  WebElement firstCheckBox;
+        public void SelectLot()
+        {
+        	selectLot.click();
+        	firstCheckBox.click();
+        }
         @FindBy(xpath="//input[@placeholder='Password']")                                 WebElement New_pwd;
         @FindBy(xpath="//input[@placeholder='Retype Password']")                          WebElement retype_pwd;
         @FindBy(xpath="(//input[@type='radio' and @formcontrolname='radio'])[1]")         WebElement radio_active;
         @FindBy(xpath="(//input[@type='radio' and @formcontrolname='radio'])[2]")         WebElement radio_in_active;
         @FindBy(xpath="//button[text()='Cancel']")                                        WebElement cancel_button;
         @FindBy(xpath="//button[text()='Save']")                                          WebElement save_button;
-	    
 	    
 	    
 	    public void ClickOnNewButton()

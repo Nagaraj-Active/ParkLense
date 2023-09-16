@@ -20,46 +20,25 @@ public class BClientPage
 		PageFactory.initElements(driver, this);
 	}
 	@FindBy(xpath="//a[@href='/clients']")                                        WebElement clientLink;
-	
 	@FindBy(xpath="//div[@class='d-flex flex-wrap']/../h1")                       WebElement clientPageText;
-	
-	@FindBy(xpath="//input[@placeholder='Search By Name']")                       WebElement search_field;
-	
+    @FindBy(xpath="//input[@placeholder='Search By Name']")                       WebElement search_field;
 	@FindBy(xpath="//button[@class='btn-i-gray3 btn-icon-text commangap-3']")     WebElement client_reset_btn;
-	
 	@FindBy(xpath="(//div[@class='filter-dropdown'])[1]")                         WebElement client_filter;
-	
 	@FindBy(xpath="(//div[@class='filter-dropdown'])[1]/..//div[2]//input")       WebElement client_search_field;
-	
 	@FindBy(xpath="((//div[@class='filter-dropdown'])[1]/..//div[2]//span)[1]")   WebElement alltype;
 	@FindBy(xpath="((//div[@class='filter-dropdown'])[1]/..//div[2]//span)[2]")   WebElement pilot_client;
 	@FindBy(xpath="((//div[@class='filter-dropdown'])[1]/..//div[2]//span)[3]")   WebElement live_client;
-	
 	@FindBy(xpath="(//div[@class='filter-dropdown'])[2]")                         WebElement status_filter;
-	
 	@FindBy(xpath="//div[@data-popper-placement='bottom-start']//input")          WebElement status_search_field;
-	
 	@FindBy(xpath="(//div[@data-popper-placement='bottom-start']//span)[1]")      WebElement status_All;
 	@FindBy(xpath="(//div[@data-popper-placement='bottom-start']//span)[1]")      WebElement status_active;
 	@FindBy(xpath="(//div[@data-popper-placement='bottom-start']//span)[1]")      WebElement status_in_active;
-	
-	
     @FindBy(xpath="//select[@class='form-select form-select ms-2 me-2']")         WebElement page_drop_down;
-//Select sel=new Select(page_drop_down);
-    @FindBy(xpath="//div[@class='table-responsive']//tbody/tr")                       WebElement client_first_record;
-//Search by id 
-    @FindBy(xpath="(//div[@class='table-responsive']//tbody/tr/td[2])[1]")            WebElement client_first_record_id;
-//search by name
-    @FindBy(xpath="(//div[@class='table-responsive']//tbody/tr/td[3])[1]")            WebElement client_first_record_name;
 //Search by status filter
     @FindBy(xpath="(//div[@class='table-responsive']//tbody/tr/td[8])[1]")            WebElement client_filter_by_Status;
-
 //first line option icon    
     @FindBy(xpath="((//div[@class='table-responsive']//tbody/tr/td[9])[1]//div)[2]/span/img") WebElement clientFirstKebabIcon;
-    
-   @FindBy(xpath ="(//div[@class=\"action align-items-center d-flex\"])[1]/span") WebElement firstRecordEditIcon;  
- 
-	@FindBy(xpath="//div[@class='page-content']//h1")                             WebElement clientEditPageText;
+
     @FindBy(xpath="//input[@placeholder='Client Name']")                          WebElement editName;
     @FindBy(xpath="//input[@placeholder='Mobile']")                               WebElement editMobile;
     @FindBy(xpath="//input[@placeholder='Email']")                                WebElement editMail;
@@ -95,9 +74,10 @@ public class BClientPage
     	editMail.sendKeys(mail);
     }
     
-    public void MobileField(String mobNumber)
+    public void MobileField(String mobNumber) throws InterruptedException
      {
-    	editMobile.clear();
+       editMobile.clear();
+       Thread.sleep(2000);
 	   editMobile.sendKeys(mobNumber);
      }
     public String VerifyUpdatedMobile()
@@ -115,11 +95,7 @@ public class BClientPage
     	String name=editMail.getText();
          return name;
     }
-    public String VerifyEditPageText()
-    {
-    	String CE_text=clientEditPageText.getText();
-    	return CE_text;
-    }
+    
    public void ClickOnClientLink()
     {
 	  clientLink.click();
@@ -157,24 +133,13 @@ public class BClientPage
    {
 	   page_drop_down.click();
    }
-   public boolean GetFirstRecord()
-   {
-   boolean first_record=client_first_record.isDisplayed();
-   return first_record;
-   }
+   
    public void StatusSearchField(String status)
 	{
 		status_search_field.sendKeys(status);
 	}
-   public String GetClientId()
-   {
-   String id=client_first_record_id.getText();	
-   return id;
-   }
-   public void EditClientICon()
-   {
-	   firstRecordEditIcon.click();
-   }
+   
+   
 }
 		
 

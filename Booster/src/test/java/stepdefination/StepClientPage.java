@@ -10,6 +10,7 @@ import org.junit.Assert;
 
 import com.github.dockerjava.api.model.Event;
 
+import ForEachLoop.Iterations;
 import io.cucumber.java.en.*;
 import myBrowsers.Browser;
 import pom.ALogin;
@@ -19,7 +20,7 @@ public class StepClientPage
 {
 	ALogin lp;
 	BClientPage bc;
-	
+	Iterations it;
 
 	    @When("they log in to their account")
 	    public void logInToAccount() 
@@ -31,9 +32,10 @@ public class StepClientPage
 	        
 	    }
 
-	    @When("click on the client link")
+	    @When("they click on the client link")
 	    public void clickOnClientLink() throws InterruptedException 
 	    {
+	    	it=new Iterations(Browser.driver);
 	    	bc=new BClientPage(Browser.driver);
 	    	Thread.sleep(4000);
 	        bc.ClickOnClientLink();
@@ -44,15 +46,8 @@ public class StepClientPage
 	    @Then("the user on the client home page")
 	    public void verifyHomeClientPage() 
 	    {
-	      if(bc.CLientHomeVerification().equalsIgnoreCase("clients"))
-	      {
-	    	  Assert.assertTrue(true);
-	      }
-	      else
-	      {
-            System.out.println("fail");	    	  
-	      
-	      }
+	    	Assert.assertEquals(bc.CLientHomeVerification(),"Clients");
+
 	     }
 	    
 
@@ -60,14 +55,14 @@ public class StepClientPage
 	    @When("search client by id")
 	    public void SearchClientById() throws AWTException, InterruptedException
 	    {
-	       // id="247";
+	       
 	    	bc.EnterIntoSearchField("247");
 	    	
 	    }
 	    @Then("verify client by id")
 	    public void VerifyCLient()
 	    {
-	    	Assert.assertEquals(bc.GetClientId(), id);
+	    	Assert.assertEquals(it.FeatchFirstRecordId(), "247");
 	    }
 	    
 	    
@@ -75,13 +70,13 @@ public class StepClientPage
 	    public void ClickOnEditICon() throws AWTException, InterruptedException 
 	    {
 	    	bc.EnterIntoSearchField("47");
-	    	bc.EditClientICon();
+	    	it.EditICon();
 	    }
 
 	    @Then("the user on the client edit page")
 	    public void the_user_on_the_client_edit_page() 
 	    {
-	       Assert.assertEquals(bc.VerifyEditPageText(),"Edit Client");
+	       Assert.assertEquals(it.VerifyCurrentPageText(),"Edit Client");
 	    }
 
 	    @When("update the client name")
@@ -91,7 +86,7 @@ public class StepClientPage
 	    }
 
 	    @When("update the mobile number")
-	    public void update_the_mobile_number() 
+	    public void update_the_mobile_number() throws InterruptedException 
 	    {
 	    bc.MobileField("7760633081");
 	    }

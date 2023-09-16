@@ -52,23 +52,11 @@ public class CUserPage
      {
     	 name="";
     	 clickonclientdropdown.click();
-
-    	// int clientsize=client_drop_down.size();
-    	// Thread.sleep(5000);
-    	// List<WebElement> elements=driver.findElements(By.xpath("//ul[@class='list-unstyled p-1']//li"));
-    	 //int size=elements.size();
-    	 //System.out.println("anil : "+size);
-    	 // name="auburn";
     	List<WebElement> clients=client_drop_down;
     	 for(int i=0;i<clients.size()-1;i++)
     	 {
-    		 
     		 WebElement b=clients.get(i);
-    		 
-    		 //System.out.println(b.getText());
-    		 
-    		 
-    		 if(b.getText().equals(name))
+    	   	if(b.getText().equals(name))
     		 {
     			 ClickOnLink();
     			 

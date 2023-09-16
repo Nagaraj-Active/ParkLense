@@ -1,9 +1,15 @@
 package pom;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+import myBrowsers.Browser;
 
 public class BClientNewPage 
 {
@@ -14,7 +20,7 @@ public class BClientNewPage
 		PageFactory.initElements(driver,this);
 	}
     @FindBy(xpath="//button[@class='btn-i-secondary btn-icon-text commangap-3']") WebElement Client_newbtn;
-    //@FindBy(xpath="//div[@class='page-content']//h1")                       WebElement NewUserPageText;
+    @FindBy(xpath="//div[@class='page-content']//h1")                       WebElement NewUserPageText;
     @FindBy(xpath="//input[@placeholder='Client Name']")                    WebElement name;
     @FindBy(xpath="//input[@placeholder='Mobile']")                         WebElement mobile;
     @FindBy(xpath="//input[@placeholder='Email']")                          WebElement email;
@@ -24,15 +30,31 @@ public class BClientNewPage
     @FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[1]")   WebElement country_drop;
     @FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[2]")   WebElement state_drop;
     @FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[3]")   WebElement city_drop;
-    @FindBy(xpath="(//select[@formcontrolname=\"DropdownControl\"])[4]") WebElement client_drop;
-    @FindBy(xpath="(//button[@type='button'])[1]")                       WebElement start_date;
-    @FindBy(xpath="(//button[@type='button'])[2]")                       WebElement end_date;
+    @FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[4]") WebElement clientType_drop;
+    @FindBy(xpath="(//button[@class='input-group-text'])[1]")            WebElement start_date;
+    @FindBy(xpath="(//button[@class='input-group-text'])[2]")            WebElement end_date;
     @FindBy(xpath="(//button[@type='button'])[3]")                       WebElement cancel_button;
-    @FindBy(xpath="(//button[@type='button'])[3]/../button[2]")          WebElement save_button;
+    @FindBy(xpath="//button[@class='btn-wide-secondary']")               WebElement save_button;
     
     @FindBy(xpath="(//input[@type='radio' and @formcontrolname='radio'])[1]") WebElement radio_active;
     @FindBy(xpath="(//input[@type='radio' and @formcontrolname='radio'])[2]") WebElement radio_in_active;
-
+   
+    public void Status(int id)
+    {
+    	if(id==1)
+    	{
+    		radio_active.click();
+    	}
+    	else
+    	{
+    		radio_in_active.click();;
+    	}
+    }
+    public String NewPageTextVerify()
+    {
+    	String text=NewUserPageText.getText();
+    	return text;
+    }
     
     public void ClickOnNewButton()
     {
@@ -56,24 +78,34 @@ public class BClientNewPage
     }
     public void SelectCountry()
     {
-    	country_drop.click();
+    	Select sel=new Select(country_drop);
+    	sel.selectByValue("1");
     }
     public void SelectState()
     {
-    	state_drop.click();
+    	Select sel=new Select(state_drop);
+    	sel.selectByValue("1");
+    	//state_drop.click();
     }
     public void SelectCity()
     {
-    	city_drop.click();
+    	Select sel=new Select(city_drop);
+    	sel.selectByVisibleText("HYDERABAD");
+    	//city_drop.click();
     }
     public void SelectClientType()
     {
-    	client_drop.click();
+    	Select sel=new Select(clientType_drop);
+    	sel.selectByValue("Pilot");
+    	System.out.println("transfer");
+    	//client_drop.click();
     }
     public void SelectStartDate()
     {
     	start_date.click();
+    	
     }
+
     public void SelectEndDate()
     {
     	end_date.click();
@@ -86,11 +118,7 @@ public class BClientNewPage
     {
     	cancel_button.click();
     }
-    public boolean VerifyCreatedClient()
-    {
-    	 return false;
-    }
-    
+     
    
 }
 
