@@ -6,9 +6,13 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "./ParklenseFeature/Client.feature",
+@CucumberOptions(features = "./ParklenseFeature/BClient/ClientCreation.feature",
+                     glue = {"stepdefination","myBrowsers"},
+                   plugin = {"html:./target/ClientCreationReport.html"}
+
+                 /*          "./ParklenseFeature/BClient/ClientUpdate.feature",
                    glue = {"stepdefination","myBrowsers"},
-                   plugin = {"html:./target/ClientReport.html"}
+                   plugin = {"html:./target/ClientUpdateReport.html"}*/
 		        )
 
 public class RunnerClientHome 

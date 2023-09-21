@@ -1,73 +1,89 @@
 package pom;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.PageFactoryFinder;
-import org.testng.annotations.Test;
+import org.openqa.selenium.support.ui.Select;
 
-public class CUserPage 
-{
-	WebDriver driver;
-	public CUserPage(WebDriver driver)
-	{
-		this.driver=driver;
-		PageFactory.initElements(driver, this);
-	}
-	//User Home page
-		@FindBy (xpath="//span[text()=' Users']")									      WebElement user_link;
-		@FindBy (xpath="//div[@class='d-flex flex-wrap']/../h1")                          WebElement user_page_text;
-		@FindBy (xpath="//input[@placeholder='Search By Name']")						  WebElement search_field;
-		@FindBy (xpath="(//input[@class='form-control'])[1]/../../li")                    List<WebElement> client_drop_down;
-		@FindBy (xpath="(//div[@class='dropdown-toggle'])[2]")							  WebElement status_drop_down;
-	    @FindBy (xpath="//button[@class='btn-i-gray3 btn-icon-text commangap-3']")        WebElement reset_button;
-	    @FindBy (xpath="(//div[@class=\"action align-items-center d-flex\"])[1]")         WebElement edit_btn;
-	    @FindBy (xpath="//select[@class='form-select form-select ms-2 me-2']")            WebElement page_drop_down;
-	   
-	    @FindBy (xpath="(//div[@id='filterdropdown'])[1]")                                WebElement clickonclientdropdown;
+public class CUserPage {
 
-     public void ClickOnLink()
-     {
-       user_link.click();	 
-     }
-     public String UserPageText()
-     {
-    	 String text=user_page_text.getText();
-    	 return text;
-     }
-     public void EnterIdIntoSearchField(String id)
-     {;
-    	 search_field.sendKeys(id);
-     }
-     public void FirstRecordId()
-     {
-    	 
-     }
-     
-     public void ClientDropDown(String name) //throws InterruptedException 
-     {
-    	 name="";
-    	 clickonclientdropdown.click();
-    	List<WebElement> clients=client_drop_down;
-    	 for(int i=0;i<clients.size()-1;i++)
-    	 {
-    		 WebElement b=clients.get(i);
-    	   	if(b.getText().equals(name))
-    		 {
-    			 ClickOnLink();
-    			 
-    		 }
-    	 }
-     }
-     
-
+	 WebDriver driver;
+		public CUserPage(WebDriver driver)
+		{
+		 this.driver=driver;
+		 PageFactory.initElements(driver, this);
+		}
+//*******************************************************UserCreation*********************************************************************************	
+		    @FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[1]")                WebElement newUserClientDropDown;
+		    @FindBy(xpath="(//input[@placeholder='Enter full name'])[1]")                     WebElement newUserName;
+		    @FindBy(xpath="(//input[@placeholder='Enter full name'])[2]")                     WebElement newUserNickName;
+		    @FindBy(xpath="//input[@placeholder='Mobile']")                                   WebElement newUserMobile;
+		    @FindBy(xpath="//input[@placeholder='Email']")                                    WebElement newUserEmail; 
+		    public void SelectUserclient(String clientname)
+	        {
+	        	
+	        	Select sel=new Select(newUserClientDropDown);
+	        	sel.selectByVisibleText(clientname);
+	        }
+		    public void EnterNewUserName(String name) throws InterruptedException
+		    {   
+		    	newUserName.sendKeys(name);
+		    }
+		    public void EnterUserNickName(String name)
+		    {
+		    	newUserNickName.sendKeys(name);
+		    }
+		    public void EnterUserMobileNumber(String Number)
+		    {
+		    	newUserMobile.sendKeys(Number);
+		    }
+		    public void EnterUserMailID(String mail)
+		    {
+		    	newUserEmail.sendKeys(mail);
+		    }
+		
+	        @FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[2]")                      WebElement userRole;
+	       	@FindBy(xpath="//div[@class='ng-select-container']/span")                               WebElement selectLot;
+	        @FindBy(xpath="//input[@id='item-1']")                                                  WebElement firstCheckBox;
+	        @FindBy(xpath="//input[@placeholder='Password']")                                       WebElement newPassword;
+	        @FindBy(xpath="//input[@placeholder='Retype Password']")                                WebElement retypePassword;
+	        public void SelectUserRole()
+	        {
+	        	
+	        	Select sel=new Select(userRole);
+	        	sel.selectByVisibleText("MANAGER");
+	        }
+	        public void SelectUserLot()
+	        {
+	        	selectLot.click();
+	        	firstCheckBox.click();
+	        }
+	       
+	        public void EnterUserNewPassword(String password)
+		    {
+	        	newPassword.sendKeys(password);
+		    }
+		    public void EnterRetypePasswordIntoRetypePasswordField(String password)
+		    {
+		    	retypePassword.sendKeys(password);
+		    }
+//****************************************************UpdateUser************************************************************
+		    public void ClearExistingName() throws InterruptedException
+		    {
+		    	Thread.sleep(2000);
+		    	newUserName.clear();
+		    }
+		    public void ClearExistingUserNickName()
+		    {
+		    	newUserNickName.clear();
+		    }
+		    public void ClearExistingMobileNumber()
+		    {
+		    	newUserMobile.clear();
+		    }
+		    public void ClearExistingUserMailID()
+		    {
+		    	newUserEmail.clear();
+		    }
 }
-
-
-
-
-

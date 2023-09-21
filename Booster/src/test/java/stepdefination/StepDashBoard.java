@@ -6,20 +6,20 @@ import ForEachLoop.Iterations;
 import io.cucumber.java.en.*;
 import myBrowsers.Browser;
 import pom.ADashboard;
-import pom.BClientPage;
+
 
 public class StepDashBoard 
 {
 	WebDriver driver;
 	ADashboard db;
 	Iterations it;
-	BClientPage cp;
+	//BClientPage cp;
 
 	@Then("verify the Prospects section")
 	public void verify_the_prospects_section() 
 	{
 	    db=new ADashboard(Browser.driver);
-	    it.ClickOnByText("Clients");
+	    it.ClickOnlinkByText("Clients");
 	    //cp.
 	}
 

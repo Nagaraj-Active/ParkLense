@@ -5,11 +5,15 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.github.dockerjava.api.model.Driver;
 
 public class Iterations 
 {
@@ -24,11 +28,11 @@ public class Iterations
         PageFactory.initElements(driver, this);
     }
     
-   public void ClickOnByText(String feature)
+   public void ClickOnlinkByText(String feature)
    {
 	 for(WebElement links:AllLinks)
 	 {
-		 if(links.getText().equals(feature))
+		 if(links.getText().equalsIgnoreCase(feature))
 		 {
 			 links.click();
 			 break;
@@ -38,6 +42,27 @@ public class Iterations
  //**************************************enter Save button And For keyboard**********************************************
    @FindBy(xpath="//button[text()='Save']")                                      WebElement saveButton ;
    @FindBy(xpath="//button[text()='Cancel']")                                    WebElement cancelButton ;
+   public void scrollForEnter(WebDriver driver, WebElement element)
+   {
+  	 JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", saveButton);
+   }
+   
+   public boolean VerifySaveButon()
+   {
+	   boolean verify=saveButton.isEnabled();
+      return verify;
+   }
+   public boolean VerifyCancelButton()
+   {
+	   boolean verify=cancelButton.isEnabled();
+	   return verify;
+   }
+   
+
+		 
+   
+   
    public void ClickOnSaveButton() throws AWTException
    {
    	saveButton.click();
@@ -96,37 +121,51 @@ public class Iterations
 	  sel.selectByVisibleText(name);
   }
 //**********************************************First Record components****************************************** 
-  @FindBy(xpath="//select[@class='form-select form-select ms-2 me-2']")         WebElement page_drop_down;
-
-  @FindBy(xpath="//div[@class='table-responsive']//tbody/tr")               List<WebElement>     client_first_record;
+  @FindBy(xpath="//select[@class='form-select form-select ms-2 me-2']")         WebElement pageDropDown;
+ public boolean PageDropDown()
+ {
+  boolean verify=pageDropDown.isEnabled();
+  return verify;
+ }
+  @FindBy(xpath="//div[@class='table-responsive']//tbody/tr")               List<WebElement>     featchAllRecords;
     public void featchAllRecordData()
     {
 	  
     }
-  @FindBy(xpath="(//div[@class='table-responsive']//tbody/tr/td[1])[1]")        WebElement clientFirstRecordId;
-   public String FeatchFirstRecordId()
+  @FindBy(xpath="//div[@class='table-responsive']//tbody/tr[1]/td[2]")        WebElement featchFirstRecordName;   //Except client and attributeValue
+   public String VerifyFirstRecordName()
    {
-	   String id=clientFirstRecordId.getText();
+	   String id=featchFirstRecordName.getText();
 	   return id;
    }
-  @FindBy(xpath="(//div[@class='table-responsive']//tbody/tr/td[2])[1]")         WebElement clientFirstRecordName;
-   public String FeatchFirstRecordName()
-   {
-	   String name=clientFirstRecordName.getText();
-	   return name;
-   }
+  
 //********************************************Edit icon And Search text field*********************************************************************
-   @FindBy(xpath ="(//span[@class='btn-sm-gray3 edit'])[1]")                      WebElement settingEditIcon; 
-   @FindBy(xpath ="(//div[@class='action align-items-center d-flex'])[1]/span")   WebElement firstRecordEditIcon;
-   @FindBy (xpath="//input[@placeholder='Search By Name']")						  WebElement searchField;
+   @FindBy(xpath ="(//span[@class='btn-sm-gray3 edit'])[1]")                      WebElement editIcon; 
+      @FindBy (xpath="//input[@placeholder='Search By Name']")						  WebElement searchField;
    @FindBy(xpath="//button[@class='btn-i-secondary btn-icon-text commangap-3']")  WebElement newButton;     //not using for camera
-   public void EditICon()
+   public boolean VerifyNewButon()
    {
-	   firstRecordEditIcon.click();
+	   boolean verify=newButton.isEnabled();
+	   return verify;
    }
-   public void SettingEditICon()
+   public boolean VerifyEditIcon()
    {
-	  settingEditIcon.click();
+	   boolean verify=editIcon.isEnabled();
+	   return verify;
+   }
+   public void ClickOnNewButton()
+   {
+	   newButton.click();
+   }
+
+   public void ClickOnEditICon()
+   {
+	  editIcon.click();
+   }
+   public boolean SearchFieldisEnabled()
+   {
+	   boolean verify=searchField.isEnabled();
+	   return verify;
    }
    public void SearchField(String id) throws AWTException, InterruptedException
    {
@@ -143,16 +182,38 @@ public class Iterations
    }
    @FindBy(xpath="(//input[@type='radio' and @formcontrolname='radio'])[1]")         WebElement radioActive;   ////For lot its not working
    @FindBy(xpath="(//input[@type='radio' and @formcontrolname='radio'])[2]")         WebElement radioInactive;
-   public void Radiobutton(int id)
+   
+   
+   
+   
+   public void scrollforRadio(WebDriver driver, WebElement element)
    {
+  	 JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", element);
+   }
+   
+   public boolean VerifyActiveRadiobuttons()
+   {
+	   boolean verify=radioActive.isEnabled();
+   return verify;
+   }
+   public boolean VerifyInActiveRadiobuttons()
+   {
+       boolean verify=radioInactive.isEnabled();
+   return verify;
+   }
+   public void ClickOnRadiobutton(int id) 
+   {
+//	   Thread.sleep(3000);
+//	   scrollforRadio(driver, radioActive);
 	   if (id==2)
 	   {
-		   radioInactive.click();
+		  radioInactive.click();
 	   }
 	   else
 	   {
 		   System.out.println("ByDefault Active In Status");
-		   radioActive.click();
+		   //scrollforRadio(driver, radioActive);
 	   }
    }
 //***************************************Page Text to verify the current page******************************************************   
@@ -162,5 +223,74 @@ public class Iterations
    	String text=pageText.getText();
    	return text;
      }
+     
+//*****************************************Setting page**********************************************************************
+   @FindBy(xpath = "//div[@class='container-fluid']/ul/li") List<WebElement> settingLinks;
+   public void ClickOnSettingLinksByText(String links) {
+                                             
+   for(WebElement a:settingLinks)           {
+     if(a.getText().equals(links))       {
+       a.click();
+    	break;                           }
+     }
+                                                  }
 
+   
+   @FindBy (xpath="//div[@class='table-responsive']//tbody/tr[1]/td[1]") WebElement settingId;
+   @FindBy (xpath="//div[@class='table-responsive']//tbody/tr[1]/td[2]") WebElement settingName;
+   public String getsettingsID() throws InterruptedException
+   {
+	   String id=settingId.getText();
+       Thread.sleep(2000);
+	   return id;
+   }
+   public String getSettingName()
+   {
+	   String name=settingName.getText();
+	   return name;
+   }
+   @FindBy(xpath="//span[text()=' All Status']")WebElement statusDropDown;
+   public boolean VerifyStatusDrop()
+   {
+	   boolean verify=statusDropDown.isEnabled();
+	   return verify;
+   }
+   @FindBy(xpath="//div[@class='filter-dropdown']/../div[2]/ul/li") List<WebElement> statusOptions;
+   public void SelectStatus(String status)
+   {
+	   statusDropDown.click();
+	   for(WebElement a:statusOptions)
+	   {
+		   if(a.getText().equalsIgnoreCase(status))
+		   {
+			   a.click();
+			   break;
+		   }
+	   }
+   }
+   @FindBy(xpath="//button[@class='btn-i-gray3 btn-icon-text commangap-3']")WebElement resetbutton;
+   public boolean VerifyResetButton()
+   {
+	   boolean res=resetbutton.isEnabled();
+       return res;
+   }
+   @FindBy(xpath="(//a[@aria-label='Next'])")WebElement nextPageDropDown;
+   public boolean VerifyNextPageDropDown()
+   {
+	   boolean verify=nextPageDropDown.isEnabled();
+       return verify;
+   }
+   @FindBy (xpath="(//button[@class='btn-wide-gray3 mb-3 mb-md-0'])[1]")WebElement deleteButton;
+   public void ClickOnDeleteButton()
+   {
+	  deleteButton.click(); 
+   }
+   
+   
+   
+   
+   
+   
+   
+   
 }

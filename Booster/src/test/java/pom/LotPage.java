@@ -5,36 +5,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ELotPage 
-{
-	WebDriver driver;
-	 public ELotPage(WebDriver driver)
+public class LotPage {
+
+	
+	
+	 WebDriver driver;
+	 public LotPage(WebDriver driver)
 	 {
 		 this.driver=driver;
 		 PageFactory.initElements(driver,this);
 	 }
-	    @FindBy(xpath="//span[text()=' All Status']")              WebElement     firstPageStatus;
-	    public boolean VerifyFirstPageStatusDrop()
-		{
-			boolean verify=firstPageStatus.isEnabled();
-			return verify;
-		}
-	    @FindBy(xpath="//span[text()=' All Sites']")                    WebElement firstPageSites;
-	    public boolean VerifyFirstPageSiteDrop()
-		{
-			boolean verify=firstPageSites.isEnabled();
-			return verify;
-		}
-	    @FindBy(xpath="//span[text()=' All Clients']")                    WebElement firstPageClientDrop;
-	    public boolean VerifyFirstPageclientDrop()
-		{
-			boolean verify=firstPageClientDrop.isEnabled();
-			return verify;
-		}
-	    @FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[1]")WebElement newPageClientDrop;
-		@FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[2]")WebElement newPageSiteDrop;
+		
+		
+		@FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[1]")WebElement newPageClientDrop;
+		@FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[1]")WebElement newPageSiteDrop;
 		@FindBy(xpath="//input[@placeholder='Enter Lot Name']")WebElement lotNamefield;
-		@FindBy(xpath="//input[@placeholder='Enter Lot Title (Display Name)']")WebElement lotTitlefield;
+		@FindBy(xpath="Enter Lot Title (Display Name)")WebElement lotTitlefield;
 		public boolean VerifyclientDrop()
 		{
 			boolean verify=newPageClientDrop.isEnabled();
@@ -151,16 +137,4 @@ public class ELotPage
 			boolean verify=inActiveStatus.isEnabled();
 			return verify;
 		}
-		@FindBy(xpath="//div[@class='table-responsive']//tbody/tr[1]/td[9]//span[2]")WebElement stallsIcon; 
-		public boolean VerifyStallsIcon()
-		{
-			boolean verify=stallsIcon.isEnabled();
-			return verify;
-		}
-		public void ClickOnStallsIcon()
-		{
-			
-			stallsIcon.click();
-			
-		}
-	}
+}

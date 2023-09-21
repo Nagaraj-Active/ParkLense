@@ -19,7 +19,7 @@ public class StepSitePage
 	@When("they click on the site link")
 	public void they_click_on_the_site_link(){
 		Cc=new Iterations(Browser.driver);
-		Cc.ClickOnByText("Sites");           }
+		Cc.ClickOnlinkByText("Sites");           }
 
 	@Then("they should be on the site page")
 	public void they_should_be_on_the_site_page()  
