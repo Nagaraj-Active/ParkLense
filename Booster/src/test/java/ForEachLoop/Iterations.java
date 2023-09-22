@@ -8,6 +8,7 @@ import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -39,13 +40,14 @@ public class Iterations
 		 }
 	 }
    }
+   
  //**************************************enter Save button And For keyboard**********************************************
    @FindBy(xpath="//button[text()='Save']")                                      WebElement saveButton ;
    @FindBy(xpath="//button[text()='Cancel']")                                    WebElement cancelButton ;
    public void scrollForEnter(WebDriver driver, WebElement element)
    {
   	 JavascriptExecutor js = (JavascriptExecutor) driver;
-       js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", saveButton);
+       js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", element);
    }
    
    public boolean VerifySaveButon()
@@ -65,7 +67,9 @@ public class Iterations
    
    public void ClickOnSaveButton() throws AWTException
    {
-   	saveButton.click();
+	   scrollForEnter(driver, saveButton);
+//	 Actions actions = new Actions(driver);
+//	 actions.moveToElement(saveButton).click().build().perform();
    	Robot rt=new Robot();
    	rt.keyPress(KeyEvent.VK_ENTER);
    	rt.keyRelease(KeyEvent.VK_ENTER);
@@ -143,6 +147,11 @@ public class Iterations
    @FindBy(xpath ="(//span[@class='btn-sm-gray3 edit'])[1]")                      WebElement editIcon; 
       @FindBy (xpath="//input[@placeholder='Search By Name']")						  WebElement searchField;
    @FindBy(xpath="//button[@class='btn-i-secondary btn-icon-text commangap-3']")  WebElement newButton;     //not using for camera
+   @FindBy(xpath="//button[@class='btn-i-secondary btn-icon-text commangap-3 mb-3']")WebElement cameraNewButton;
+   public void ClickOnCameraNewButton()
+   {
+	   cameraNewButton.click();
+   } 
    public boolean VerifyNewButon()
    {
 	   boolean verify=newButton.isEnabled();
@@ -280,7 +289,12 @@ public class Iterations
 	   boolean verify=nextPageDropDown.isEnabled();
        return verify;
    }
-   @FindBy (xpath="(//button[@class='btn-wide-gray3 mb-3 mb-md-0'])[1]")WebElement deleteButton;
+   @FindBy(xpath="(//button[@class='btn-wide-gray3'])[1]")WebElement lotDelete;
+   public void ClickOnLotDeleteButton()
+   {
+	  lotDelete.click(); 
+   }
+   @FindBy (xpath="(//button[@class='btn-wide-gray3 mb-3 mb-md-0 ng-star-inserted'])")WebElement deleteButton;
    public void ClickOnDeleteButton()
    {
 	  deleteButton.click(); 

@@ -99,12 +99,15 @@ public class BStepClientPage
 
 		@When("they select Status from the client status dropdown")
 		public void i_select_from_the_client_status_dropdown()  {
-		     it.ClickOnRadiobutton(2);
+			
+			it.ClickOnRadiobutton(2);
 		}
 		
-		@When("they click on the Save button")
+		@When("click on the Save button")
 		public void ClickOntheSaveButton() throws AWTException  
 		{
+			it=new Iterations(Browser.driver); 
+			
 		it.ClickOnSaveButton();
 		}
 		@Then("the created client should be displayed on the client page")

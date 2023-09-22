@@ -7,7 +7,7 @@ import ForEachLoop.Iterations;
 import io.cucumber.java.en.*;
 
 import myBrowsers.Browser;
-import pom.GAttributeValue;
+import pom.ZAttributeValue;
 import pom.SClientRole;
 
 public class StepClientRole 
@@ -15,7 +15,7 @@ public class StepClientRole
   WebDriver driver;
   public Iterations it;
   public SClientRole cr;
-  public GAttributeValue av;
+  public ZAttributeValue av;
 	
 	
 	@When("click on client-roles link")
@@ -44,7 +44,7 @@ public class StepClientRole
 
 	@Then("the client-role new page client dropdown should be enabled")
 	public void the_client_role_new_page_client_dropdown_should_be_enabled() {
-		av=new GAttributeValue(Browser.driver);
+		av=new ZAttributeValue(Browser.driver);
 		Assert.assertEquals(av.AttributeValuePageClientDrop(),true);
 	}
 
@@ -67,7 +67,7 @@ public class StepClientRole
 
 	@When("in the clientRoleNew page select the client from client drop down")
 	public void select_the_client_role_status() {
-		av=new GAttributeValue(Browser.driver);
+		av=new ZAttributeValue(Browser.driver);
 		av.ClickOnClientNewpage();
 	    av.SelectClientInNewPage("parklens");
 	    

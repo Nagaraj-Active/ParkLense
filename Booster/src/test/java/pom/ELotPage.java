@@ -1,122 +1,81 @@
 package pom;
+	import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+	import org.openqa.selenium.WebElement;
+	import org.openqa.selenium.support.FindBy;
+	import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
-public class ELotPage 
-{
-	WebDriver driver;
+import myBrowsers.Browser;
+
+	public class ELotPage 
+	{
+	 WebDriver driver;
 	 public ELotPage(WebDriver driver)
 	 {
 		 this.driver=driver;
 		 PageFactory.initElements(driver,this);
 	 }
-	    @FindBy(xpath="//span[text()=' All Status']")              WebElement     firstPageStatus;
-	    public boolean VerifyFirstPageStatusDrop()
-		{
-			boolean verify=firstPageStatus.isEnabled();
-			return verify;
-		}
-	    @FindBy(xpath="//span[text()=' All Sites']")                    WebElement firstPageSites;
-	    public boolean VerifyFirstPageSiteDrop()
-		{
-			boolean verify=firstPageSites.isEnabled();
-			return verify;
-		}
-	    @FindBy(xpath="//span[text()=' All Clients']")                    WebElement firstPageClientDrop;
-	    public boolean VerifyFirstPageclientDrop()
-		{
-			boolean verify=firstPageClientDrop.isEnabled();
-			return verify;
-		}
+//*************************************HomePage**********************************************	 
+	    @FindBy(xpath="//span[text()=' All Status']")                   WebElement homePageStatus;
+	    @FindBy(xpath="//span[text()=' All Sites']")                    WebElement homePageSites;
+	    @FindBy(xpath="//span[text()=' All Clients']")                  WebElement homePageClientDrop;
+//********************************Creation Page*******************************************************	    
 	    @FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[1]")WebElement newPageClientDrop;
 		@FindBy(xpath="(//select[@formcontrolname='DropdownControl'])[2]")WebElement newPageSiteDrop;
-		@FindBy(xpath="//input[@placeholder='Enter Lot Name']")WebElement lotNamefield;
-		@FindBy(xpath="//input[@placeholder='Enter Lot Title (Display Name)']")WebElement lotTitlefield;
-		public boolean VerifyclientDrop()
+		@FindBy(xpath="//input[@placeholder='Enter Lot Name']")           WebElement lotName;
+		@FindBy(xpath="//input[@placeholder='Enter Lot Title (Display Name)']")WebElement lotTitle;
+		
+		public void Selectclient(String name)
 		{
-			boolean verify=newPageClientDrop.isEnabled();
-			return verify;
-		}
-		public void Selectclient()
-		{
-			newPageClientDrop.click();
-		}
-		public boolean VerifySitetDrop()
-		{
-			boolean verify=newPageSiteDrop.isEnabled();
-			return verify;
-		}
-		public void Selectsite()
-		{
-			newPageSiteDrop.click();
-		}
-		public boolean VerifyLotNameField()
-		{
-			boolean verify=lotNamefield.isEnabled();
-			return verify;
-		}
-		public void EnterLotName(String name)
-		{
-			lotNamefield.sendKeys(name);
+			Select sel=new Select(newPageClientDrop);
+			sel.selectByVisibleText(name);
 		}
 		
-		public boolean VerifyLotTitleField()
+		public void Selectsite(String name)
 		{
-			boolean verify=lotTitlefield.isEnabled();
-			return verify;
+			Select sel=new Select(newPageSiteDrop);
+			sel.selectByVisibleText(name);
 		}
+		
+		public void EnterLotName(String name)
+		{
+			lotName.sendKeys(name);
+		}
+		
+		
 		public void EnterLotTitle(String title)
 		{
-			lotTitlefield.sendKeys(title);
+			lotTitle.sendKeys(title);
 		}
 		@FindBy(xpath="//input[@placeholder='Enter parking duration']")WebElement parkingDurationfield;
-		public boolean VerifyParkingDuration()
-		{
-			boolean verify=parkingDurationfield.isEnabled();
-			return verify;
-		}
+		@FindBy(xpath="//span[@id='basic-addon1']")                    WebElement uploadButton;
+		@FindBy(xpath="//input[@placeholder='Latitude']")              WebElement lattitudeField;
+		@FindBy(xpath="//input[@placeholder='Longitude']")             WebElement longitudeField;
+		@FindBy(xpath="(//input[@type='radio'])[3]")                   WebElement indoor;
+		@FindBy(xpath="(//input[@type='radio'])[4]")                   WebElement outDoor;
 		public void EnterParkingDuration(String dur)
 		{
 			parkingDurationfield.sendKeys(dur);
-		}
-		@FindBy(xpath="//span[@id='basic-addon1']")WebElement uploadButton;
-		public boolean VerifyOverlayUploadbutton()
-		{
-			boolean verify=uploadButton.isEnabled();
-			return verify;
 		}
 		public void UploadOverlay()
 		{
 			uploadButton.click();
 		}
-		@FindBy(xpath="//input[@placeholder='Latitude']")WebElement lattitudeField;
-		public boolean VerifyLattitudefield()
-		{
-			boolean verify=lattitudeField.isEnabled();
-			return verify;
-		}
+		
+	
 		public void Enterlattitude(String lat)
 		{
 			lattitudeField.sendKeys(lat);
 		}
-		@FindBy(xpath="//input[@placeholder='Longitude']")WebElement longitudeField;
-		public boolean VerifylongitudeField()
-		{
-			boolean verify=longitudeField.isEnabled();
-			return verify;
-		}
 		public void EnterLongitude(String longitude)
 		{
 			longitudeField.sendKeys(longitude);;
-		}
-		@FindBy(xpath="(//input[@type='radio'])[3]")WebElement indoor;
-		public boolean Verifyindoor()
-		{
-			boolean verify=indoor.isEnabled();
-			return verify;
 		}
 		public void SelectLotLocation(int id)
 		{
@@ -125,42 +84,47 @@ public class ELotPage
 				outDoor.click();
 			}
 		}
-		@FindBy(xpath="(//input[@type='radio'])[4]") WebElement outDoor;
-		public boolean VerifyOutDoor()
-		{
-			boolean verify=outDoor.isEnabled();
-			return verify;
-		}
-		
 		@FindBy(xpath="(//input[@type='radio'])[5]")WebElement activeStatus;
-		public boolean VerifyactiveStatus()
-		{
-			boolean verify=activeStatus.isEnabled();
-			return verify;
-		}
+		@FindBy(xpath="(//input[@type='radio'])[6]")WebElement inActiveStatus;
+		@FindBy(xpath="//div[@class='table-responsive']//tbody/tr[1]/td[9]//span[2]")WebElement stallsIcon; 
 		public void SelectLotStatus(int id)
 		{
 			if(id==2)
-			{
+		{
 				inActiveStatus.click();
-			}
 		}
-		@FindBy(xpath="(//input[@type='radio'])[6]")WebElement inActiveStatus;
-		public boolean VerifyinactiveStatus()
-		{
-			boolean verify=inActiveStatus.isEnabled();
-			return verify;
-		}
-		@FindBy(xpath="//div[@class='table-responsive']//tbody/tr[1]/td[9]//span[2]")WebElement stallsIcon; 
-		public boolean VerifyStallsIcon()
-		{
-			boolean verify=stallsIcon.isEnabled();
-			return verify;
 		}
 		public void ClickOnStallsIcon()
 		{
-			
-			stallsIcon.click();
-			
+				stallsIcon.click();
 		}
+//***********************************************UpdateLot******************************************
+		public void ClearLotName() throws InterruptedException
+		{
+			Thread.sleep(3000);
+			lotName.clear();
+		}
+		public void uploadLotOverlayImage() throws AWTException, InterruptedException
+	    {
+	       	uploadButton.click();
+	    	
+	    	Robot rob=new Robot();
+	    	rob.delay(2000);
+	    	
+	    	StringSelection copyPath=new StringSelection("/home/active35/Downloads/ac-gayst (6).png");
+	    	Toolkit.getDefaultToolkit().getSystemClipboard().setContents(copyPath, null);
+	    	
+	    	rob.keyPress(KeyEvent.VK_CONTROL);
+	    	rob.keyPress(KeyEvent.VK_V);
+	    	rob.keyRelease(KeyEvent.VK_CONTROL);
+	    	rob.keyRelease(KeyEvent.VK_V);
+	    	
+	    	rob.keyPress(KeyEvent.VK_ENTER);
+	    	rob.keyRelease(KeyEvent.VK_ENTER);
+	    	
+	    }
 	}
+	
+	
+	
+
