@@ -5,6 +5,6 @@ Feature: Camera Deletion
     When they log in to their account
     When they click on the camera link
     When they select a specific camera and click on the edit button
-    And click on the delete button
+    And click on the delete camera button
     Then the deleted camera should be verified
-    And they should exit from the browser
+ 

@@ -6,11 +6,11 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "./ParklenseFeature/FCamera/CameraCreation.feature",
-                          /*"./ParklenseFeature/FCamera/CameraUpdate.feature",
-                         "./ParklenseFeature/FCamera/CameraDeletion.feature",*/
+@CucumberOptions(features = /*"./ParklenseFeature/FCamera/CameraCreation.feature",*/
+                          "./ParklenseFeature/FCamera/CameraDeletion.feature",
+                        /* "./ParklenseFeature/FCamera/CameraDeletion.feature",*/
                     glue = {"stepdefination","myBrowsers"},
-                   plugin = {"html:./target/CameraCreationReport.html"}
+                   plugin = {"html:./target/CameraDeleteReport.html"}
 		)
 
 

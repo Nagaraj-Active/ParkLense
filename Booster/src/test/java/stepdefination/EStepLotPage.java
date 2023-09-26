@@ -34,12 +34,12 @@ public class EStepLotPage {
 
 	@When("they select the site")
 	public void they_select_the_site() {
-	    lp.Selectsite("active");
+	    lp.Selectsite("Spy Park");
 	}
 
 	@When("they enter the lot name")
 	public void they_enter_the_lot_name() {
-	  lp.EnterLotName("tech");
+	  lp.EnterLotName("as");
 	}
 
 	@When("they enter the lot title")
@@ -97,7 +97,7 @@ public class EStepLotPage {
 	@When("click on the lot delete button")
 	public void LotDeleting() throws AWTException {
 	    it.ClickOnLotDeleteButton();
-	    it.EmergencyEnterKey();
+	    it.KeyBoardEnterKey();
 	}
 	
 	

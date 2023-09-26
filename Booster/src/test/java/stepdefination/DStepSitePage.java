@@ -76,7 +76,7 @@ public class DStepSitePage {
 	public void click_on_the_delete_button() throws AWTException, InterruptedException {
 		it=new Iterations(Browser.driver);
 		it.ClickOnDeleteButton();
-	    it.EmergencyEnterKey();
+	    it.KeyBoardEnterKey();
 	   
 	}
 	

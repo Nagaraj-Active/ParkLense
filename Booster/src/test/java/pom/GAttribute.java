@@ -14,6 +14,7 @@ public class GAttribute {
 		  PageFactory.initElements(driver, this);
 	  }	
 //**************************************Create******************************	
+	  @FindBy(xpath="(//button[@class='btn-wide-gray3 mb-3 mb-md-0'])[1]")                   WebElement deleteButton; 
 	  @FindBy(xpath="//input[@placeholder='Attribute Name']")WebElement nameTextField;
 	  @FindBy(xpath="//textarea[@placeholder='60 Characters only']")WebElement descriptionField;
 	  
@@ -27,6 +28,10 @@ public class GAttribute {
 		  nameTextField.clear();
 	  }
 	
+	  public void DeleteButton()
+	  {
+		  deleteButton.click();
+	  }
 	
 	
 	

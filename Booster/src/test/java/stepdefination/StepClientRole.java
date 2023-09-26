@@ -8,6 +8,7 @@ import io.cucumber.java.en.*;
 
 import myBrowsers.Browser;
 import pom.ZAttributeValue;
+import pom.HAttributeValue;
 import pom.SClientRole;
 
 public class StepClientRole 
@@ -15,7 +16,7 @@ public class StepClientRole
   WebDriver driver;
   public Iterations it;
   public SClientRole cr;
-  public ZAttributeValue av;
+  public HAttributeValue av;
 	
 	
 	@When("click on client-roles link")
@@ -42,11 +43,7 @@ public class StepClientRole
 	    Assert.assertEquals(cr.VerifyPermissionTitleField(),true);
 	}
 
-	@Then("the client-role new page client dropdown should be enabled")
-	public void the_client_role_new_page_client_dropdown_should_be_enabled() {
-		av=new ZAttributeValue(Browser.driver);
-		Assert.assertEquals(av.AttributeValuePageClientDrop(),true);
-	}
+	
 
 	@Then("the all check-boxes should be enabled")
 	public void the_all_check_boxes_should_be_enabled() {
@@ -67,9 +64,9 @@ public class StepClientRole
 
 	@When("in the clientRoleNew page select the client from client drop down")
 	public void select_the_client_role_status() {
-		av=new ZAttributeValue(Browser.driver);
+		av=new HAttributeValue(Browser.driver);
 		av.ClickOnClientNewpage();
-	    av.SelectClientInNewPage("parklens");
+	    av.SelectClientOnNewPage("parklens");
 	    
 	}
 	@When("select the client-role status")

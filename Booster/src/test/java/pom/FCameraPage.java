@@ -1,10 +1,13 @@
 package pom;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import ForEachLoop.Iterations;
 
 public class FCameraPage 
 {
@@ -28,6 +31,8 @@ public class FCameraPage
 	@FindBy(xpath="//input[@aria-autocomplete='list']")                                    WebElement stallsDrop ;
 	@FindBy(xpath="//input[@placeholder='Enter the Camera Access URL']")                   WebElement cameraUrl ;
 	@FindBy(xpath="//input[@id='item-0']")WebElement selectStalls;
+	@FindBy(xpath="(//button[@class='btn-wide-gray3 mb-3 mb-md-0'])[1]")                   WebElement deleteButton; 
+
 	public void SelectClient(String name)
 	{
 		Select sel=new Select(clientDrop);
@@ -55,7 +60,7 @@ public class FCameraPage
 	}
 	public void EnterCameraUrl(String name)
 	{
-		cameraName.sendKeys(name);
+		cameraUrl.sendKeys(name);
 	}
 //*********************************Update*********************************************
 	public void ClearCameraName() throws InterruptedException
@@ -63,4 +68,15 @@ public class FCameraPage
 		Thread.sleep(4000);
 		cameraName.clear();
 	}
+	public void scrollforRadio(WebDriver driver, WebElement element)
+	   {
+	  	 JavascriptExecutor js = (JavascriptExecutor) driver;
+	       js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", element);
+	   }
+public void DeleteCameraName() throws InterruptedException
+{
+	scrollforRadio(driver, deleteButton);
+	Thread.sleep(2000);
+
+}
 }

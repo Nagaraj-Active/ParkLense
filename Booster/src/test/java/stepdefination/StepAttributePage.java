@@ -12,6 +12,7 @@ import ForEachLoop.Iterations;
 import io.cucumber.java.en.*;
 
 import myBrowsers.Browser;
+import pom.FCameraPage;
 import pom.GAttribute;
 import pom.ZAttribute;
 
@@ -20,6 +21,7 @@ public class StepAttributePage
    WebDriver driver;
    Iterations it;	
    GAttribute at;	
+   FCameraPage cp;
 	
 	
 	@When("they click on the setting page")
@@ -110,13 +112,21 @@ public class StepAttributePage
 	}
 	@When("modify the Attribute name")
 	public void modify_the_name() {
-	    at.CleratExistText();
+		at=new GAttribute(Browser.driver);
+		at.CleratExistText();
 		at.EnterName("Tester");
+	}
+	@When("click on the attribute delete button")
+	public void DeleteButton() throws InterruptedException, AWTException{
+		at=new GAttribute(Browser.driver);
+		at.DeleteButton();
+		it=new Iterations(Browser.driver);
+		it.KeyBoardEnterKey();
 	}
 
 	@Then("the edited attribute should be verified")
 	public void the_edited_attribute_should_be_verified() {
-		Assert.assertEquals(it.getSettingName(),"Covered shelter");
+		Assert.assertEquals(it.getSettingName(),"Tester");
 	}
 
 	@Then("the deleted attribute should be verified")

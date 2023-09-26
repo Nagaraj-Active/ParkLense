@@ -64,24 +64,20 @@ public class Iterations
 
 		 
    
-   
+   //	 Actions actions = new Actions(driver);
+//	 actions.moveToElement(saveButton).click().build().perform(); 
    public void ClickOnSaveButton() throws AWTException
    {
 	   scrollForEnter(driver, saveButton);
-//	 Actions actions = new Actions(driver);
-//	 actions.moveToElement(saveButton).click().build().perform();
-   	Robot rt=new Robot();
-   	rt.keyPress(KeyEvent.VK_ENTER);
-   	rt.keyRelease(KeyEvent.VK_ENTER);
+        saveButton.click();
+     	KeyBoardEnterKey();
    }
    public void ClickOnCancelButton() throws AWTException
    {
    	cancelButton.click();
-   	Robot rt=new Robot();
-   	rt.keyPress(KeyEvent.VK_ENTER);
-   	rt.keyRelease(KeyEvent.VK_ENTER);
+   	KeyBoardEnterKey();
    }
-    public void EmergencyEnterKey() throws AWTException
+    public void KeyBoardEnterKey() throws AWTException
    {
    	Robot rb=new Robot();
    	rb.keyPress(KeyEvent.VK_ENTER);
@@ -295,9 +291,10 @@ public class Iterations
 	  lotDelete.click(); 
    }
    @FindBy (xpath="(//button[@class='btn-wide-gray3 mb-3 mb-md-0 ng-star-inserted'])")WebElement deleteButton;
-   public void ClickOnDeleteButton()
+   public void ClickOnDeleteButton() throws AWTException
    {
-	  deleteButton.click(); 
+	   
+	  KeyBoardEnterKey(); 
    }
    
    

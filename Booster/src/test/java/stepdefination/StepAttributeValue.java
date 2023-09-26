@@ -48,7 +48,7 @@ public class StepAttributeValue
 	public void enter_the_attribute_value_name() {
 	    av.EnterAttributeValue("Devops");
 	}
-	@When("modify the Attribute name")
+	//@When("modify the Attribute name")
 	public void ModifyAttributeNmae() {
 		av=new HAttributeValue(Browser.driver);
 	    av.EnterAttributeValue("Devops");

@@ -1,5 +1,7 @@
 package stepdefination;
 
+import java.awt.AWTException;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
@@ -36,7 +38,7 @@ public class FStepCameraPage
 
 	@When("they enter the camera name")
 	public void they_enter_the_camera_name() {
-	    cp.EnterCameraName("tech");
+	    cp.EnterCameraName("Tech");
 	}
 
 	@When("they select the stalls")
@@ -50,7 +52,7 @@ public class FStepCameraPage
 	}
 	@Then("the created Camera should be verified")
 	public void the_created_lot_should_be_verified() {
-	    Assert.assertEquals(it.VerifyFirstRecordName(), "tech");
+	    Assert.assertEquals(it.VerifyFirstRecordName(), "Tech");
 	}
 //**********************CameraUpdate*************************************************************
 	@When("they select a specific camera and click on the edit button")
@@ -60,7 +62,8 @@ public class FStepCameraPage
 
 	@When("modify the camera name")
 	public void modify_the_camera_name() throws InterruptedException {
-	 cp.ClearCameraName();
+		 cp=new FCameraPage(Browser.driver);
+		cp.ClearCameraName();
 	 cp.EnterCameraName("active");
 	}
 
@@ -69,6 +72,13 @@ public class FStepCameraPage
 	Assert.assertEquals(it.VerifyFirstRecordName(), "active");
 	}
 ///*************************DeletedCamera***************************************************
+	@When("click on the delete camera button")
+	public void ClickOnDelete() throws InterruptedException, AWTException {
+		 cp=new FCameraPage(Browser.driver);
+		cp.DeleteCameraName();;
+		it.KeyBoardEnterKey();
+	}
+	
 	@Then("the deleted camera should be verified")
 	public void the_deleted_camera_should_be_verified() {
 	Assert.assertNotEquals(it.VerifyFirstRecordName(), "active");
