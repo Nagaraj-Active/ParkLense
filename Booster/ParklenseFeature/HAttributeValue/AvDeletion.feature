@@ -7,5 +7,5 @@ Feature: AttributeValue Deletion
     And click on attributeValue link
     Then the user is on the AttributeValue home page
     When they select a specific attributeValue and click on the edit button
-    And click on the delete button
+    And click on the AVdelete button
     Then the deleted attributevalue should be verified

@@ -6,8 +6,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = /*"./AdminRole/AllPageComponents.feature",*/
-                            "./AdminRole/Creation.feature",
+@CucumberOptions(features ="./ParklenseFeature",
                      glue = {"stepdefination","myBrowsers"},
                    plugin = {"html:./target/AllPageComponents/Creation.html"}
 		)

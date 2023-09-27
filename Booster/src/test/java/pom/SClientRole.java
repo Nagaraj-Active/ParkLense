@@ -65,11 +65,11 @@ public boolean verifyAllCheckBox() {
 }
 
 
-@FindBy(xpath="(//div[@class='sortingicon d-flex flex-column'])[1]/img[2]")WebElement descButton;
+@FindBy(xpath="(//div[@class='sortingicon d-flex flex-column']/img)[2]")WebElement descButton;
 public void ClickOnDescButton()
 {
 	descButton.click();
 }
-//@FindBy(xpath="")WebElement
+
 
 }

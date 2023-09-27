@@ -9,10 +9,10 @@ Feature: Verify the Admin-Users page functionalities
     And enter the Admin-Users Name
     And enter the Admin-Users Mobile number
     And enter the Admin-Users Email-id
-    And select the client-role status
+    And select the Admin-role status
     And enter the Admin-Users password
     And Renter the Admin-Users password
     And select the Admin-Users status
     And click on the save button
     Then the created Admin-Users should be verified
-    And they should exit from the browser
+  

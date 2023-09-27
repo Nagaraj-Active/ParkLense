@@ -6,7 +6,7 @@ Feature: Verify the Admin-Users page functionalities
     When they click on the setting page
     And click on Admin-Users link
     When they select a specific Admin-Users and click on the edit button
-    And modify the name,email and role
+    And modify the Admin-user details
     And click on the save button
     Then the edited Admin-Users should be verified
-    And they should exit from the browser
+    

@@ -1,11 +1,11 @@
 package stepdefination;
 
-import static org.testng.Assert.fail;
+
 
 import java.awt.AWTException;
 
 import org.junit.Assert;
-import org.junit.internal.runners.statements.Fail;
+
 import org.openqa.selenium.WebDriver;
 
 import ForEachLoop.Iterations;
@@ -14,7 +14,7 @@ import io.cucumber.java.en.*;
 import myBrowsers.Browser;
 import pom.FCameraPage;
 import pom.GAttribute;
-import pom.ZAttribute;
+
 
 public class StepAttributePage 
 {
@@ -126,7 +126,7 @@ public class StepAttributePage
 
 	@Then("the edited attribute should be verified")
 	public void the_edited_attribute_should_be_verified() {
-		Assert.assertEquals(it.getSettingName(),"Tester");
+		Assert.assertEquals(it.getSettingName(),"Covered shelter");
 	}
 
 	@Then("the deleted attribute should be verified")

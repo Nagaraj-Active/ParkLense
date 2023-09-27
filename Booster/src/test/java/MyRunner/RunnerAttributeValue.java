@@ -6,7 +6,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "./ParklenseFeature/HAttributeValue/AVCreation.feature",
+@CucumberOptions(features = "./ParklenseFeature/HAttributeValue/AvDeletion.feature",
                      glue = {"stepdefination","myBrowsers"},
                    plugin = {"html:./target/attributeValueReport.html"}
 		)

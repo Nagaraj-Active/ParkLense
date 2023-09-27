@@ -1,11 +1,17 @@
 package pom;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import io.cucumber.java.en.Then;
 
 public class SAdminRole 
 {
@@ -15,24 +21,18 @@ public class SAdminRole
 	 this.driver=driver;
 	 PageFactory.initElements(driver,this);
  }
+//********************************Creation********************************************************** 
  @FindBy(xpath="//input[@placeholder='Permission Title']")WebElement permissionTitle;
  @FindBy(xpath="//input[@type='checkbox']")List<WebElement> allCheckBoxes;	
- public boolean VerifyPermissionTitleField()
- {
- 	boolean verify=permissionTitle.isEnabled();
-     return verify;
- }
- public void ClearPermissiontitle()
+
+ public void EnterPermissionTitle(String name) throws InterruptedException
  {
 	 permissionTitle.clear();
+	 Thread.sleep(2000);
+	 permissionTitle.sendKeys(name);
      
  }
 
- public void EnterPermissionTitle(String name)
- {
-	 permissionTitle.sendKeys("anil");;
-     
- }
  public void verifyAllCheckBox() 
  {
 	    int count = 0;
@@ -49,6 +49,13 @@ public class SAdminRole
 	    } else {
 	        System.out.println("Not all checkboxes are selected");
 	    }
-		
-	 
-}}
+ }
+//***********************************Deletion***************************************************
+public void ScrollPage() throws AWTException, InterruptedException {	
+	    Robot rt=new Robot();
+	    rt.keyPress(KeyEvent.VK_DOWN);
+	    Thread.sleep(2000);
+	    rt.keyRelease(KeyEvent.VK_DOWN);
+}
+
+}

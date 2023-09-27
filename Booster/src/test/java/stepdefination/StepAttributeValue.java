@@ -1,4 +1,6 @@
 package stepdefination;
+import java.awt.AWTException;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
@@ -46,7 +48,8 @@ public class StepAttributeValue
 
 	@When("enter the attribute value name")
 	public void enter_the_attribute_value_name() {
-	    av.EnterAttributeValue("Devops");
+		 av=new HAttributeValue(Browser.driver);
+		av.EnterAttributeValue("Devops");
 	}
 	//@When("modify the Attribute name")
 	public void ModifyAttributeNmae() {
@@ -55,10 +58,11 @@ public class StepAttributeValue
 	}
 
 	@When("select the client from drop down")
-	public void select_the_client_from_drop_down() {
+	public void select_the_client_from_drop_down() throws InterruptedException {
 		av=new HAttributeValue(Browser.driver);
-		av.ClickOnClientNewpage();
-	    av.SelectClientOnNewPage("parklens");
+		av.ClickOnClientdrop();
+		Thread.sleep(2000);
+		av.SelectClientOnNewPage("parklens");
 	}
 
 	@Then("the created attribute value should be verified")
@@ -82,6 +86,16 @@ public class StepAttributeValue
 		{
 			System.out.println("is deleted");
 		}
+	}
+//**********************************************Delete******************************************
+	
+	@When("click on the AVdelete button")
+	public void ClickOnDeleteButton() throws AWTException, InterruptedException {
+	   av=new HAttributeValue(Browser.driver);
+		av.ClickOnDeleteButton();
+	
+		it=new Iterations(Browser.driver);
+	   it.KeyBoardEnterKey();
 	}
 
 }

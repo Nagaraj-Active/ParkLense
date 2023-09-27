@@ -2,6 +2,7 @@ package pom;
 
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,7 +20,7 @@ public class HAttributeValue {
 //*********************AttributeValueCreation**************************	
 @FindBy(xpath="//select[@formcontrolname='DropdownControl']")WebElement attributeDropDown;
 @FindBy(xpath="//input[@placeholder='Attribute Value Name']")WebElement nameTextField;
-@FindBy(xpath="//div[@class='ng-select-container']/span")WebElement attributeValuePageClientDrop;
+@FindBy(xpath="//span[@class='ng-arrow-wrapper']")WebElement attributeValuePageClientDrop;
 @FindBy(xpath="//div[@class='ng-dropdown-panel-items scroll-host']/div[2]/div")List<WebElement> attributevaluenewPageClients;  
 	
 	public void SelectAttributeDropDown()
@@ -27,13 +28,19 @@ public class HAttributeValue {
 		Select sel=new Select(attributeDropDown);
 		sel.selectByVisibleText("Covered shelter");
 	}
+	public void scrollForEnter(WebDriver driver, WebElement element)
+	   {
+	  	 JavascriptExecutor js = (JavascriptExecutor) driver;
+	       js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", element);
+	   }
 	
 	public void EnterAttributeValue(String name)
 	{
+	    nameTextField.clear();
 		nameTextField.sendKeys(name);
 	}
 	
-	public void ClickOnClientNewpage()
+	public void ClickOnClientdrop()
 	{
 		attributeValuePageClientDrop.click();
 	}
@@ -43,11 +50,16 @@ public class HAttributeValue {
     	{
     		if(a.getText().equalsIgnoreCase(name))
     		{
+    			scrollForEnter(driver, a);
     			a.click();
     			break;
     		}
     	}
     }
-
-
+//*******************************Deletion*********************************************************************
+    @FindBy(xpath="(//button[@class='btn-wide-gray3 mb-3 mb-md-0'])[1]")WebElement deleteButton;
+public void ClickOnDeleteButton()
+{
+	deleteButton.click();
+}
 }

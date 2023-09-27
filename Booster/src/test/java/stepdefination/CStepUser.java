@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
 
 import myBrowsers.Browser;
 import pom.CUserPage;
-import pom.UserPage;
+
 
 public class CStepUser 
 {

@@ -7,7 +7,7 @@ import ForEachLoop.Iterations;
 import io.cucumber.java.en.*;
 
 import myBrowsers.Browser;
-import pom.ZAttributeValue;
+
 import pom.HAttributeValue;
 import pom.SClientRole;
 
@@ -65,7 +65,7 @@ public class StepClientRole
 	@When("in the clientRoleNew page select the client from client drop down")
 	public void select_the_client_role_status() {
 		av=new HAttributeValue(Browser.driver);
-		av.ClickOnClientNewpage();
+		av.ClickOnClientdrop();
 	    av.SelectClientOnNewPage("parklens");
 	    
 	}
@@ -89,7 +89,7 @@ public class StepClientRole
 	public void they_select_a_specific_client_role_and_click_on_the_edit_button() {
 		cr=new SClientRole(Browser.driver);
 		cr.ClickOnDescButton();
-		//it.EditICon();
+		it.ClickOnEditICon();
 	}
 
 	@When("do some modification on client-role")
@@ -102,7 +102,7 @@ public class StepClientRole
 	@Then("the edited client-role should be verified")
 	public void the_edited_client_role_should_be_verified() throws InterruptedException {
 		cr.ClickOnDescButton();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		Assert.assertEquals(it.getSettingName(),"tester"); 
 	}
 

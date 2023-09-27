@@ -109,6 +109,7 @@ public class BStepClientPage
 			it=new Iterations(Browser.driver); 
 			
 		it.ClickOnSaveButton();
+		it.KeyBoardEnterKey();
 		
 		}
 		@Then("the created client should be displayed on the client page")

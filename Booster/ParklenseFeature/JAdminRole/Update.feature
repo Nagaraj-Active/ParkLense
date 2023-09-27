@@ -6,7 +6,7 @@ Feature: Verify the Admin-Roles page functionalities
     When they click on the setting page
     And click on Admin-roles link
     When they select a specific admin-role and click on the edit button
-    And modify the permissions
-    And click on the save button
-    Then the edited admin-role should be verified
-    And they should exit from the browser
+    And enter the admin-role title
+    And click on the Save button
+    Then the edited role should be verified
+   

@@ -69,7 +69,7 @@ public class Iterations
    public void ClickOnSaveButton() throws AWTException
    {
 	   scrollForEnter(driver, saveButton);
-        saveButton.click();
+       // saveButton.click();
      	KeyBoardEnterKey();
    }
    public void ClickOnCancelButton() throws AWTException
@@ -231,8 +231,8 @@ public class Iterations
      
 //*****************************************Setting page**********************************************************************
    @FindBy(xpath = "//div[@class='container-fluid']/ul/li") List<WebElement> settingLinks;
-   public void ClickOnSettingLinksByText(String links) {
-                                             
+   public void ClickOnSettingLinksByText(String links) 
+   {                                 
    for(WebElement a:settingLinks)           {
      if(a.getText().equals(links))       {
        a.click();

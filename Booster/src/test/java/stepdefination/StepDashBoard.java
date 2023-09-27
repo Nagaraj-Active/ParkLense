@@ -18,9 +18,10 @@ public class StepDashBoard
 	@Then("verify the Prospects section")
 	public void verify_the_prospects_section() 
 	{
+		it=new Iterations(Browser.driver);
 	    db=new ADashboard(Browser.driver);
 	    it.ClickOnlinkByText("Clients");
-	    //cp.
+	    
 	}
 
 	@Then("verify the Lots section")
