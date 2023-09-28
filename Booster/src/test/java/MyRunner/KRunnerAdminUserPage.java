@@ -9,9 +9,9 @@ import io.cucumber.junit.CucumberOptions;
 
 @CucumberOptions(features = "./ParklenseFeature/KAdminUser/AUDeletion.feature",
 glue = {"stepdefination","myBrowsers"},
-plugin = {"html:./target/AdminUser/Delete.html"}
+plugin = {"html:./target/AdminUser/delete.html"}
 )
-public class RunnerAdminUserPage 
+public class KRunnerAdminUserPage 
 {
 
 }

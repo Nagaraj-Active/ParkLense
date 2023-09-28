@@ -39,8 +39,9 @@ public WebDriver driver;
     {
     	clientStartDate.click();
     }
-    public void ClickOnClientEndDate()
+    public void ClickOnClientEndDate() 
     {
+    	
     	clientEndDate.click();
     }
     

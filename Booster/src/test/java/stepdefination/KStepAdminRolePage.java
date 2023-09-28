@@ -11,14 +11,14 @@ import io.cucumber.java.en.*;
 import myBrowsers.Browser;
 import pom.HAttributeValue;
 import pom.SAdminRole;
-import pom.SClientRole;
+import pom.IClientRole;
 
-public class StepAdminRolePage 
+public class KStepAdminRolePage 
 {
     WebDriver driver;
     SAdminRole ar;
     Iterations it;
-    SClientRole cr;
+    IClientRole cr;
     HAttributeValue av;
 //*********************************Created*******************************************************	
 	@When("click on Admin-roles link")
@@ -40,49 +40,56 @@ public class StepAdminRolePage
 	}
 	
    @When("enter the admin-role title")
-	public void enter_the_admin_role_title() throws InterruptedException {
+	public void enter_the_admin_role_title() throws InterruptedException, AWTException {
 	   ar=new SAdminRole(Browser.driver);
 		ar.EnterPermissionTitle("amaz");
+		Thread.sleep(4000);
+		it.KeyBoardEnterKey(1);
+		Thread.sleep(2000);
 	
 	}
   
 
 	@Then("the created admin-role should be verified")
 	public void the_created_admin_role_should_be_verified() throws InterruptedException {
-	    
-	    cr=new SClientRole(Browser.driver);
+		Thread.sleep(4000); 
+	    cr=new IClientRole(Browser.driver);
 	    cr.ClickOnDescButton();
-	    Thread.sleep(2000);
 	    it=new Iterations(Browser.driver);
-		Assert.assertEquals(it.getSettingName(),"amaz");
+		Assert.assertEquals(it.VerifyFirstRecordName(),"amaz");
 	}
 	//******************************************************************Update***********************************************************************
 	@When("they select a specific admin-role and click on the edit button")
-	public void they_select_a_specific_client_role_and_click_on_the_edit_button() {
-		cr=new SClientRole(Browser.driver);
+	public void they_select_a_specific_client_role_and_click_on_the_edit_button() throws InterruptedException, AWTException {
+		cr=new IClientRole(Browser.driver);
 		cr.ClickOnDescButton();
 		it.ClickOnEditICon();
+		Thread.sleep(3000);
+		 it.KeyBoardEnterKey(1);
 	}
 
 	@Then("the edited role should be verified")
-	  	public void the_edited_lot_should_be_verified() {
-	  		Assert.assertEquals(it.VerifyFirstRecordName(), "amaz"); 
+	  	public void the_edited_lot_should_be_verified() throws InterruptedException {
+		Thread.sleep(2000);
+		cr.ClickOnDescButton();	
+		Assert.assertEquals(it.VerifyFirstRecordName(), "amaz"); 
 	  	}
+	
+//**********************************************AdminDelete******************************************	
+	//@When("click on the Admin role delete button")
+	public void ClickOnDeleteButton() throws AWTException, InterruptedException {
+	   av=new HAttributeValue(Browser.driver);
+	   ar=new SAdminRole(Browser.driver);
+	   it.KeyBoardEnterKey(1);
+	   av.ClickOnDeleteButton();
+		it=new Iterations(Browser.driver);
+	   
+	}
 	@Then("the deleted admin-role should be verified")
   	public void VerifyAdminRole() {
 		cr.ClickOnDescButton();
   		Assert.assertNotEquals(it.VerifyFirstRecordName(), "amaz"); 
   	}
-//**********************************************AdminDelete******************************************	
-	@When("click on the Admin role delete button")
-	public void ClickOnDeleteButton() throws AWTException, InterruptedException {
-	   av=new HAttributeValue(Browser.driver);
-	   ar=new SAdminRole(Browser.driver);
-	   ar.ScrollPage();
-	   av.ClickOnDeleteButton();
-		it=new Iterations(Browser.driver);
-	   it.KeyBoardEnterKey();
-	}
 	
 	
 }

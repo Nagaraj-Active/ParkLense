@@ -8,6 +8,6 @@ Feature: Verify the Admin-Roles page functionalities
     When they click on the new button
     And enter the admin-role title
     And select the client-role status
-    And click on the Save button
+    And click on the save button
     Then the created admin-role should be verified
   

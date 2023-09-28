@@ -92,9 +92,10 @@ public class BStepClientPage
 		public void SelectCLientDate() throws InterruptedException {
 			it=new Iterations(Browser.driver);
 		     cb.ClickOnClientStartDate();
-		     it.DatePicker("2023/Sep/21");
+		     it.DatePicker("2023/Oct/01");
+		     Thread.sleep(4000);
 		     cb.ClickOnClientEndDate();
-		     it.DatePicker("2023/Sep/21");
+		     it.DatePicker("2023/Oct/21");
 		}
 
 		@When("they select Status from the client status dropdown")
@@ -103,13 +104,11 @@ public class BStepClientPage
 			it.ClickOnRadiobutton(2);
 		}
 		
-		@When("click on the Save button")
-		public void ClickOntheSaveButton() throws AWTException  
+		@When("click on the save button")
+		public void ClickOntheSaveButton() throws AWTException, InterruptedException  
 		{
-			it=new Iterations(Browser.driver); 
-			
+		it=new Iterations(Browser.driver); 
 		it.ClickOnSaveButton();
-		it.KeyBoardEnterKey();
 		
 		}
 		@Then("the created client should be displayed on the client page")
@@ -118,7 +117,7 @@ public class BStepClientPage
 		} 
 //*********************************Updating**************************	 
 		@When("select one particular user click on edit icon")
-		public void ClickOnClientEditLink() {
+		public void ClickOnClientEditLink() throws InterruptedException {
 			it=new Iterations(Browser.driver); 
 			it.ClickOnEditICon();
 		}

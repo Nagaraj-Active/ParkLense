@@ -6,12 +6,10 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "./ParklenseFeature/IClientRole/CrDeletion.feature",
+@CucumberOptions(features = "./ParklenseFeature/ELot/LotDeletion.feature",
                      glue = {"stepdefination","myBrowsers"},
-                   plugin = {"html:./target/ClientRole/DeletionReport.html"}
-		)
+                   plugin = {"html:./target/Lot/deletion.html"})
 
-public class RunnerClientRole 
-{
+public class ERunnerLotPage {
 
 }

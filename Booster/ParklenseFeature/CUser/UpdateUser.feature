@@ -9,5 +9,5 @@ Feature: Updating the Existing Client-User
     When they update the client-user name
     And they update the user-mobile number
     And they update the user-email
-    And they click on the Save button
+    And click on the save button
     Then verify is the client-User is get upadted

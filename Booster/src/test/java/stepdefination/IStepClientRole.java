@@ -9,13 +9,13 @@ import io.cucumber.java.en.*;
 import myBrowsers.Browser;
 
 import pom.HAttributeValue;
-import pom.SClientRole;
+import pom.IClientRole;
 
-public class StepClientRole 
+public class IStepClientRole 
 {
   WebDriver driver;
   public Iterations it;
-  public SClientRole cr;
+  public IClientRole cr;
   public HAttributeValue av;
 	
 	
@@ -39,7 +39,7 @@ public class StepClientRole
 
 	@Then("the Permissoin title text field should be enabled")
 	public void the_permissoin_title_text_field_should_be_enabled() {
-	    cr=new SClientRole(Browser.driver);
+	    cr=new IClientRole(Browser.driver);
 	    Assert.assertEquals(cr.VerifyPermissionTitleField(),true);
 	}
 
@@ -57,7 +57,7 @@ public class StepClientRole
 
 	@When("enter the client-role title")
 	public void enter_the_client_role_title() throws InterruptedException {
-		cr=new SClientRole(Browser.driver);
+		cr=new IClientRole(Browser.driver);
 		cr.EnterPermissiontitle("officer");
 		Thread.sleep(4000);
 	}
@@ -73,43 +73,40 @@ public class StepClientRole
 	public void ClickOnClientRoleStatus() throws InterruptedException
 	{
 		it=new Iterations(Browser.driver);
-//	    it.Radiobutton(1);	
-		//it.ClickONRadiobutton();
-	//it.scrollforRadio(driver, null);
+
 	}
-	
 	@Then("the created client-role should be verified")
 	public void the_created_client_role_should_be_verified() throws InterruptedException {
-	   cr.ClickOnDescButton();
-	   Thread.sleep(5000);
-		Assert.assertEquals(it.getSettingName(),"officer");
+		Thread.sleep(5000);
+		cr.ClickOnDescButton();
+		Assert.assertEquals(it.VerifyFirstRecordName(),"officer");
 	}
 
 	@When("they select a specific client-role and click on the edit button")
 	public void they_select_a_specific_client_role_and_click_on_the_edit_button() {
-		cr=new SClientRole(Browser.driver);
+		cr=new IClientRole(Browser.driver);
 		cr.ClickOnDescButton();
 		it.ClickOnEditICon();
 	}
 
 	@When("do some modification on client-role")
 	public void modify_the_permissions() throws InterruptedException {
-	   cr.ClearPermissiontitle();
-	   Thread.sleep(4000);
+		Thread.sleep(4000);
+		cr.ClearPermissiontitle();
 	   cr.EnterPermissiontitle("tester");
 	}
 
-	@Then("the edited client-role should be verified")
+	@Then("the updated client-role should be verified")
 	public void the_edited_client_role_should_be_verified() throws InterruptedException {
+		Thread.sleep(6000);
 		cr.ClickOnDescButton();
-		Thread.sleep(4000);
-		Assert.assertEquals(it.getSettingName(),"tester"); 
+		Assert.assertEquals(it.VerifyFirstRecordName(),"tester"); 
 	}
 
 	@Then("the deleted client-role should be verified")
 	public void the_deleted_client_role_should_be_verified() {
 	    cr.ClickOnDescButton();
-	    String name=it.getSettingName();
+	    String name=it.VerifyFirstRecordName();
 	    if(name.equalsIgnoreCase("tester"))
 	    {
 	    	System.out.println("deletion is not happen");
@@ -120,15 +117,5 @@ public class StepClientRole
 	    }
 	}
 
-//	@When("search for an client-role by its ID")
-//	public void search_for_an_client_role_by_its_id() {
-//	    // Write code here that turns the phrase above into concrete actions
-//	    throw new io.cucumber.java.PendingException();
-//	}
-//
-//	@Then("the client-role should be verified by its ID")
-//	public void the_client_role_should_be_verified_by_its_id() {
-//	    // Write code here that turns the phrase above into concrete actions
-//	    throw new io.cucumber.java.PendingException();
-//	}
+
 }

@@ -17,5 +17,5 @@ Feature: User Management
     And they select Status from the client status dropdown
     And they enter  Password into the  password text field
     And they enter Retype-Password into the  retype-password text field
-    And  they click on the Save button
+    And click on the save button
     Then the created Client-User should be displayed on the client page

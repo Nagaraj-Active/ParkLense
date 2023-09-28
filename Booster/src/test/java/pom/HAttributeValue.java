@@ -56,6 +56,18 @@ public class HAttributeValue {
     		}
     	}
     }
+    @FindBy (xpath="//div[@class='table-responsive']//tbody/tr[1]/td[3]") WebElement avName;
+    public String VerifyAvName()
+    {
+ 	   String name=avName.getText();
+ 	   return name;
+    }
+    
+    
+    
+    
+    
+    
 //*******************************Deletion*********************************************************************
     @FindBy(xpath="(//button[@class='btn-wide-gray3 mb-3 mb-md-0'])[1]")WebElement deleteButton;
 public void ClickOnDeleteButton()

@@ -6,12 +6,12 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features ="./ParklenseFeature",
+@CucumberOptions(features = "./ParklenseFeature/IClientRole/CrDeletion.feature",
                      glue = {"stepdefination","myBrowsers"},
-                   plugin = {"html:./Result/CompleateReport.html"}
+                   plugin = {"html:./target/ClientRole/Delete.html"}
 		)
 
-
-public class RunnerAdminRoleAllComponents {
+public class IRunnerClientRole 
+{
 
 }

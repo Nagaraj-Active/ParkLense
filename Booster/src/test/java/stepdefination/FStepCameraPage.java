@@ -33,7 +33,7 @@ public class FStepCameraPage
 	@When("they select the lot")
 	public void they_select_the_lot() {
 	   cp=new FCameraPage(Browser.driver);
-		cp.SelectLot("as");
+		cp.SelectLot("Anil-Lot");
 	}
 
 	@When("they enter the camera name")
@@ -75,8 +75,9 @@ public class FStepCameraPage
 	@When("click on the delete camera button")
 	public void ClickOnDelete() throws InterruptedException, AWTException {
 		 cp=new FCameraPage(Browser.driver);
-		cp.DeleteCameraName();;
-		it.KeyBoardEnterKey();
+		 it.KeyBoardEnterKey(1);
+		 cp.DeleteCameraName();
+		it.ClickonOkButton();
 	}
 	
 	@Then("the deleted camera should be verified")

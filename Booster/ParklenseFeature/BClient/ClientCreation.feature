@@ -16,5 +16,5 @@ Feature: Verify the New-Client Creation
     And they select client type from the client type dropdown
     And they select Status from the client status dropdown
     And they select the client start date and end date
-    And click on the Save button
+    And click on the save button
     Then the created client should be displayed on the client page

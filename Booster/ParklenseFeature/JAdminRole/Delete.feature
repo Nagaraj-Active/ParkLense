@@ -6,5 +6,5 @@ Feature: Admin-Role deletion
     When they click on the setting page
     And click on Admin-roles link
     When they select a specific admin-role and click on the edit button
-    And click on the Admin role delete button
+    And click on the delete button
     Then the deleted admin-role should be verified

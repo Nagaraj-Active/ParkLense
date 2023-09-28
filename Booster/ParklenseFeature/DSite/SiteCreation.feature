@@ -10,5 +10,5 @@ Feature: Site Management
     When they select client from the client dropdown
     And they enter  site Name into the  site text field
     And they enter  site title into the site title text field
-    And they click on the Save button
+    And click on the save button
     Then Verify for the created site

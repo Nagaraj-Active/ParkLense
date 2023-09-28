@@ -10,7 +10,7 @@ Scenario: Verify the Updation Of Client
     When they update the client name
     And they update the mobile number
     And they update the email
-    And they click on the Save button
+    And click on the save button
     Then verify is the client get upadted
   
     

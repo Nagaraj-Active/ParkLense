@@ -7,5 +7,5 @@ Feature: Updating the Existing site
     And select one particular site click on edit icon
     Then the user on the edit site page
     When they update the site name
-    And they click on the Save button
+    And click on the save button
     Then verify is the client-site is get upadted

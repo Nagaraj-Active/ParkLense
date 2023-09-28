@@ -7,4 +7,4 @@ Feature: Verify the Lot page components
     When they select a specific Lot and click on the edit button
     And click on the lot delete button
     Then the deleted Lot should be verified
-    And they should exit from the browser
+    

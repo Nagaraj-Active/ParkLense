@@ -17,7 +17,7 @@ public class GAttribute {
 	  @FindBy(xpath="(//button[@class='btn-wide-gray3 mb-3 mb-md-0'])[1]")                   WebElement deleteButton; 
 	  @FindBy(xpath="//input[@placeholder='Attribute Name']")WebElement nameTextField;
 	  @FindBy(xpath="//textarea[@placeholder='60 Characters only']")WebElement descriptionField;
-	  
+	  @FindBy(xpath="")WebElement name;
 	  public void EnterName(String name)
 	  {
 		  nameTextField.sendKeys(name);

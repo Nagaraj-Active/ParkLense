@@ -27,8 +27,8 @@ public class SAdminRole
 
  public void EnterPermissionTitle(String name) throws InterruptedException
  {
-	 permissionTitle.clear();
 	 Thread.sleep(2000);
+	 permissionTitle.clear();
 	 permissionTitle.sendKeys(name);
      
  }

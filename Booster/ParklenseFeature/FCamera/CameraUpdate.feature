@@ -6,6 +6,6 @@ Feature: Camera Editing
     When they click on the camera link
     When they select a specific camera and click on the edit button
     And modify the camera name
-    And click on the Save button
+    And click on the save button
     Then the updated camera should be verified
     

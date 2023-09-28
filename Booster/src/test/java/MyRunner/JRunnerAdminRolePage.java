@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions;
                    plugin = {"html:./target/AdmintRole/Delete.html"}
 		        )
 
-public class RunnerAdminRolePage 
+public class JRunnerAdminRolePage 
 {
 
 }

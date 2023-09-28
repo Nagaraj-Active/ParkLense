@@ -7,5 +7,5 @@ Feature: Client Role Creation
     And click on client-roles link
     When they select a specific client-role and click on the edit button
     And do some modification on client-role
-    And click on the Save button
-    Then the edited client-role should be verified
+    And click on the save button
+    Then the updated client-role should be verified

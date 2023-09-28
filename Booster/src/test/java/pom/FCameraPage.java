@@ -68,15 +68,10 @@ public class FCameraPage
 		Thread.sleep(4000);
 		cameraName.clear();
 	}
-	public void scrollforRadio(WebDriver driver, WebElement element)
-	   {
-	  	 JavascriptExecutor js = (JavascriptExecutor) driver;
-	       js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", element);
-	   }
+	
 public void DeleteCameraName() throws InterruptedException
 {
-	scrollforRadio(driver, deleteButton);
-	Thread.sleep(2000);
+	deleteButton.click();
 
 }
 }

@@ -46,7 +46,7 @@ public class DStepSitePage {
 //**********************************Update*****************************************
 	@When("select one particular site click on edit icon")
 	public void select_one_particular_site_click_on_edit_icon() throws InterruptedException {
-	    it.ClickOnEditICon();
+		it.ClickOnEditICon();
 	    Thread.sleep(3000);
 	}
 
@@ -65,7 +65,7 @@ public class DStepSitePage {
 
 	@Then("verify is the client-site is get upadted")
 	public void verify_is_the_client_site_is_get_upadted() {
-		Assert.assertEquals(it.VerifyFirstRecordName(),"Devops"); 
+		Assert.assertEquals(it.VerifyFirstRecordName(), "Devops");
 	}
 	@Then("the deleted site should be verified")
 	public void VerifyForDeletedAccount()
@@ -76,8 +76,12 @@ public class DStepSitePage {
 	public void click_on_the_delete_button() throws AWTException, InterruptedException {
 		it=new Iterations(Browser.driver);
 		it.ClickOnDeleteButton();
-	    it.KeyBoardEnterKey();
+	    
 	   
+	}
+	@Then("the deleted user should be verified")
+	public void the_deleted_camera_should_be_verified() {
+	Assert.assertNotEquals(it.VerifyFirstRecordName(), "Devops");
 	}
 	
 	

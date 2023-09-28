@@ -1,5 +1,4 @@
-Feature: Verify the Admin-Users page functionalities
-
+Feature: Admin-Users Creation
   Scenario: Verify Admin-Users Creation
     Given the user launches the application
     When they log in to their account

@@ -10,5 +10,5 @@ Feature: Client Role Creation
     And enter the client-role title
     And in the clientRoleNew page select the client from client drop down
     And select the client-role status
-    And click on the Save button
+    And click on the save button
     Then the created client-role should be verified

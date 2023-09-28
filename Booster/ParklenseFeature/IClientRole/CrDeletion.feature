@@ -7,6 +7,6 @@ Feature: Client Role Deletion
     When they click on the setting page
     And click on client-roles link
     When they select a specific client-role and click on the edit button
-    And click on the AVdelete button
+    And click on the delete button
     Then the deleted client-role should be verified
     

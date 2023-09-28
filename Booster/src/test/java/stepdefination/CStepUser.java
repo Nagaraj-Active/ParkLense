@@ -1,5 +1,7 @@
 package stepdefination;
 
+import java.awt.AWTException;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
@@ -63,8 +65,10 @@ public class CStepUser
 	}
 
 	@When("they select Lot from the lot dropdown")
-	public void i_select_lot_from_the_lot_dropdown() {
-	    up.SelectUserLot();
+	public void i_select_lot_from_the_lot_dropdown() throws InterruptedException, AWTException {
+	    
+		up.SelectUserLot();
+	    Thread.sleep(2000);
 	}
 
 	@When("they enter  Password into the  password text field")

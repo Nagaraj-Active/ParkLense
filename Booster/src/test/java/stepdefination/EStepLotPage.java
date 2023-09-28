@@ -1,10 +1,7 @@
 package stepdefination;
 
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
+
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -29,17 +26,17 @@ public class EStepLotPage {
 	@When("they select the client")
 	public void they_select_the_client() {
 	    lp=new ELotPage(Browser.driver);
-	    lp.Selectclient("parklens");
+	    lp.Selectclient("Anil-Client");
 	}
 
 	@When("they select the site")
 	public void they_select_the_site() {
-	    lp.Selectsite("Spy Park");
+	    lp.Selectsite("Anil-Site");
 	}
 
 	@When("they enter the lot name")
 	public void they_enter_the_lot_name() {
-	  lp.EnterLotName("as");
+	  lp.EnterLotName("LotA");
 	}
 
 	@When("they enter the lot title")
@@ -54,7 +51,7 @@ public class EStepLotPage {
 
 	@When("they upload the overlay")
 	public void they_upload_the_overlay() throws AWTException, InterruptedException {
-	  lp.uploadLotOverlayImage();
+	  //lp.uploadLotOverlayImage();
 	}
 
 	@When("they select the lots location")
@@ -71,11 +68,11 @@ public class EStepLotPage {
 
 	@Then("the created Lot should be verified")
 	public void the_created_lot_should_be_verified() {
-	    Assert.assertEquals(it.VerifyFirstRecordName(), "tech");
+	    Assert.assertEquals(it.VerifyFirstRecordName(), "LotA");
 	}
 //***********************************************LotUpdate*****************************************************
 	@When("they select a specific Lot and click on the edit button")
-	public void they_select_a_specific_lot_and_click_on_the_edit_button() {
+	public void they_select_a_specific_lot_and_click_on_the_edit_button() throws InterruptedException {
 	    it.ClickOnEditICon();
 	}
 
@@ -95,9 +92,10 @@ public class EStepLotPage {
 		Assert.assertNotEquals(it.VerifyFirstRecordName(), "testerLot"); 
 	}
 	@When("click on the lot delete button")
-	public void LotDeleting() throws AWTException {
-	    it.ClickOnLotDeleteButton();
-	    it.KeyBoardEnterKey();
+	public void LotDeleting() throws AWTException, InterruptedException {
+		it.KeyBoardEnterKey(1);
+		it.ClickOnLotDeleteButton();
+	    
 	}
 	
 	

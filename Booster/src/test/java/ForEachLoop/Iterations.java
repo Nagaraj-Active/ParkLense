@@ -8,13 +8,12 @@ import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.github.dockerjava.api.model.Driver;
+
 
 public class Iterations 
 {
@@ -61,28 +60,34 @@ public class Iterations
 	   return verify;
    }
    
-
-		 
-   
-   //	 Actions actions = new Actions(driver);
-//	 actions.moveToElement(saveButton).click().build().perform(); 
-   public void ClickOnSaveButton() throws AWTException
+   public void ClickOnSaveButton() throws AWTException, InterruptedException
    {
-	   scrollForEnter(driver, saveButton);
-       // saveButton.click();
-     	KeyBoardEnterKey();
+
+		KeyBoardEnterKey(1);
+		Thread.sleep(2000);
+        saveButton.click();
+     	ClickonOkButton();
    }
-   public void ClickOnCancelButton() throws AWTException
+   public void ClickOnCancelButton() throws AWTException, InterruptedException
    {
    	cancelButton.click();
-   	KeyBoardEnterKey();
+   	KeyBoardEnterKey(2);
    }
-    public void KeyBoardEnterKey() throws AWTException
+    public void KeyBoardEnterKey(int id) throws AWTException, InterruptedException
    {
+    if(id==1)
+    {
+    	Robot rt=new Robot();
+		rt.keyPress(KeyEvent.VK_DOWN);
+		Thread.sleep(4000);
+		rt.keyRelease(KeyEvent.VK_DOWN);
+    }
+    else
+    {
    	Robot rb=new Robot();
    	rb.keyPress(KeyEvent.VK_ENTER);
    	rb.keyRelease(KeyEvent.VK_ENTER);
-   }
+   }}
 //*************************************For Picking Date*************************************************
    @FindBy(xpath="//select[@title='Select month']") WebElement month_dropdown;
    @FindBy(xpath="//select[@title='Select year']")  WebElement year_dropdown;
@@ -94,12 +99,9 @@ public class Iterations
 	     String year = dateParts[0];
 	     String month = dateParts[1];
 	     String day = dateParts[2];
-	     //wait.waitforElement(year_dropdown, 30);
+	   
 	     year_dropdown.sendKeys(year);
-	     //wait.waitforElement(month_dropdown, 30);
 	     month_dropdown.sendKeys(month);
-	     
-	     //wait.waitforElement(days_dropdown, 30);
 	     int daysize=days_dropdown.size();
 	     for(int d=0;d<daysize-1;d++)
 	     {
@@ -132,7 +134,7 @@ public class Iterations
     {
 	  
     }
-  @FindBy(xpath="//div[@class='table-responsive']//tbody/tr[1]/td[2]")        WebElement featchFirstRecordName;   //Except client and attributeValue
+  @FindBy(xpath="//input[@placeholder='Search By Name']/../following-sibling::div[1]//tbody/tr[1]/td[2]")        WebElement featchFirstRecordName;   //Except client and attributeValue
    public String VerifyFirstRecordName()
    {
 	   String id=featchFirstRecordName.getText();
@@ -163,7 +165,7 @@ public class Iterations
 	   newButton.click();
    }
 
-   public void ClickOnEditICon()
+   public void ClickOnEditICon() 
    {
 	  editIcon.click();
    }
@@ -242,18 +244,14 @@ public class Iterations
 
    
    @FindBy (xpath="//div[@class='table-responsive']//tbody/tr[1]/td[1]") WebElement settingId;
-   @FindBy (xpath="//div[@class='table-responsive']//tbody/tr[1]/td[2]") WebElement settingName;
+  
    public String getsettingsID() throws InterruptedException
    {
 	   String id=settingId.getText();
        Thread.sleep(2000);
 	   return id;
    }
-   public String getSettingName()
-   {
-	   String name=settingName.getText();
-	   return name;
-   }
+  
    @FindBy(xpath="//span[text()=' All Status']")WebElement statusDropDown;
    public boolean VerifyStatusDrop()
    {
@@ -286,19 +284,24 @@ public class Iterations
        return verify;
    }
    @FindBy(xpath="(//button[@class='btn-wide-gray3'])[1]")WebElement lotDelete;
-   public void ClickOnLotDeleteButton()
-   {
+   public void ClickOnLotDeleteButton() throws AWTException
+   { 
 	  lotDelete.click(); 
+	  okButton.click();
    }
-   @FindBy (xpath="(//button[@class='btn-wide-gray3 mb-3 mb-md-0 ng-star-inserted'])")WebElement deleteButton;
-   public void ClickOnDeleteButton() throws AWTException
+   @FindBy (xpath="(//button[@type='button'])[1]")WebElement deleteButton;//Except Camera
+   public void ClickOnDeleteButton() throws AWTException, InterruptedException
+   { 
+	  KeyBoardEnterKey(1);
+	  deleteButton.click();
+	  okButton.click();
+   }
+   
+   @FindBy(xpath="//button[.='OK']")WebElement okButton;
+   public void ClickonOkButton() 
    {
-	   
-	  KeyBoardEnterKey(); 
+	  okButton.click(); 
    }
-   
-   
-   
    
    
    

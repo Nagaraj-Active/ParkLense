@@ -54,9 +54,11 @@ public class CUserPage {
 	        	Select sel=new Select(userRole);
 	        	sel.selectByVisibleText("MANAGER");
 	        }
-	        public void SelectUserLot()
+	        public void SelectUserLot() throws InterruptedException
 	        {
+	        	
 	        	selectLot.click();
+	        	Thread.sleep(2000);
 	        	firstCheckBox.click();
 	        }
 	       

@@ -12,6 +12,6 @@ Feature: Camera creation
     And they select the stalls
     And they Enter the camera url
     And they select the lots status
-    And click on the Save button
+    And click on the save button
     Then the created Camera should be verified
     

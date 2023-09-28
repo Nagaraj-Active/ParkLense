@@ -60,10 +60,10 @@ public void click_on_admin_users_link() throws InterruptedException  {
 	    it.ClickOnRadiobutton(2);
 	}
 
-	@When("click on the save button")
-	public void click_on_the_save_button() throws AWTException {
+	//@When("click on the save button")
+	public void click_on_the_save_button() throws AWTException, InterruptedException {
 	    au.ClickOnSaveButton();
-	    it.KeyBoardEnterKey();
+	    it.KeyBoardEnterKey(1);
 	}
 
 	@Then("the created Admin-Users should be verified")
@@ -90,6 +90,6 @@ public void click_on_admin_users_link() throws InterruptedException  {
 //**************************************Deletion***********************************************
 	@Then("the deleted Admin-Users should be verified")
 	public void the_deleted_admin_users_should_be_verified() {
-	   
+		Assert.assertNotEquals(it.VerifyFirstRecordName(),"Devops");
 	}
 }

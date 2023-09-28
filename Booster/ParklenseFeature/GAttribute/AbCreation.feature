@@ -10,5 +10,5 @@ Feature: Verify the Attribute page components
     When enter the attribute name
     And Verify the description text field
     And select the attribute status
-    And click on the Save button
+    And click on the save button
     Then the created attribute should be verified

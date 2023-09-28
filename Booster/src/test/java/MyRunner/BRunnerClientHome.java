@@ -6,12 +6,13 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "./ParklenseFeature/HAttributeValue/AvDeletion.feature",
+@CucumberOptions(features = "./ParklenseFeature/BClient/ClientUpdate.feature",
                      glue = {"stepdefination","myBrowsers"},
-                   plugin = {"html:./target/attributeValueReport.html"}
-		)
+                   plugin = {"html:./target/Client/Update.html"})
 
-public class RunnerAttributeValue 
+              
+
+public class BRunnerClientHome 
 {
 
 }

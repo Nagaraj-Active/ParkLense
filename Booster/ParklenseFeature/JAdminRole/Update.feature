@@ -7,6 +7,6 @@ Feature: Verify the Admin-Roles page functionalities
     And click on Admin-roles link
     When they select a specific admin-role and click on the edit button
     And enter the admin-role title
-    And click on the Save button
+    And click on the save button
     Then the edited role should be verified
    

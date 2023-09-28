@@ -11,5 +11,5 @@ Feature: Attribute value creation
     And enter the attribute value name
     And select the client from drop down
     And select the attributeValue status
-    And click on the Save button
+    And click on the save button
     Then the created attribute value should be verified
