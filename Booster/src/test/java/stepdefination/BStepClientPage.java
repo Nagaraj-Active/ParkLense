@@ -36,10 +36,11 @@ public class BStepClientPage
 	       
 	    }
 	 @When("they click on the new button")
-		public void i_click_on_the_button() 
+		public void i_click_on_the_button() throws AWTException, InterruptedException 
 		{
 		 it=new Iterations(Browser.driver);
 			it.ClickOnNewButton();
+			it.KeyBoardOption("scroll");
 		}
 	 
 	 @Then("the user on the New client page")
