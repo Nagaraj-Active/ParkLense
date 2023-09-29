@@ -5,6 +5,6 @@ Feature: User Deletion
     When they log in to their account
     Then the user is on the dashboard home page
     When click on the client-User link
-    When  select one particular user click on edit icon
+    When  select one particular record and click on edit icon
     And click on the delete button
-    Then the deleted user should be verified
+    Then the deleted record should be verified

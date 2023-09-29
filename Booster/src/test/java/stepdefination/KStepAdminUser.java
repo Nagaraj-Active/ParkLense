@@ -63,20 +63,15 @@ public void click_on_admin_users_link() throws InterruptedException  {
 	//@When("click on the save button")
 	public void click_on_the_save_button() throws AWTException, InterruptedException {
 	    au.ClickOnSaveButton();
-	    it.KeyBoardEnterKey(1);
+	    it.KeyBoardOption("scroll");
 	}
 
 	@Then("the created Admin-Users should be verified")
 	public void the_created_admin_users_should_be_verified() {
-	   Assert.assertEquals(it.VerifyFirstRecordName(),"Anil");
+	   Assert.assertEquals(it.GetFirstRecordName(),"Anil");
 	}
 //*******************************************Update*****************************************
-	@When("they select a specific Admin-Users and click on the edit button")
-	public void they_select_a_specific_admin_users_and_click_on_the_edit_button() {
-	    it=new Iterations(Browser.driver);
-	    it.ClickOnEditICon();
-	}
-	
+
 	@When("modify the Admin-user details")
 	public void modify_the_admin_user_details() throws InterruptedException {
 	   au=new KAdminUsers(Browser.driver);
@@ -85,11 +80,8 @@ public void click_on_admin_users_link() throws InterruptedException  {
 
 	@Then("the edited Admin-Users should be verified")
 	public void the_edited_admin_users_should_be_verified() {
-	   Assert.assertEquals(it.VerifyFirstRecordName(),"Devops");
+	   Assert.assertEquals(it.GetFirstRecordName(),"Devops");
 	}
 //**************************************Deletion***********************************************
-	@Then("the deleted Admin-Users should be verified")
-	public void the_deleted_admin_users_should_be_verified() {
-		Assert.assertNotEquals(it.VerifyFirstRecordName(),"Devops");
-	}
+
 }

@@ -52,13 +52,9 @@ public class FStepCameraPage
 	}
 	@Then("the created Camera should be verified")
 	public void the_created_lot_should_be_verified() {
-	    Assert.assertEquals(it.VerifyFirstRecordName(), "Tech");
+	    Assert.assertEquals(it.GetFirstRecordName(), "Tech");
 	}
 //**********************CameraUpdate*************************************************************
-	@When("they select a specific camera and click on the edit button")
-	public void they_select_a_specific_camera_and_click_on_the_edit_button() {
-	 it.ClickOnEditICon();
-	}
 
 	@When("modify the camera name")
 	public void modify_the_camera_name() throws InterruptedException {
@@ -69,20 +65,17 @@ public class FStepCameraPage
 
 	@Then("the updated camera should be verified")
 	public void the_updated_camera_should_be_verified() {
-	Assert.assertEquals(it.VerifyFirstRecordName(), "active");
+	Assert.assertEquals(it.GetFirstRecordName(), "active");
 	}
 ///*************************DeletedCamera***************************************************
 	@When("click on the delete camera button")
 	public void ClickOnDelete() throws InterruptedException, AWTException {
 		 cp=new FCameraPage(Browser.driver);
-		 it.KeyBoardEnterKey(1);
+		 it.KeyBoardOption("scroll");
 		 cp.DeleteCameraName();
 		it.ClickonOkButton();
 	}
 	
-	@Then("the deleted camera should be verified")
-	public void the_deleted_camera_should_be_verified() {
-	Assert.assertNotEquals(it.VerifyFirstRecordName(), "active");
-	}	
+	
 	
 }

@@ -61,14 +61,9 @@ public class GStepAttributePage
 	
 	@Then("the created attribute should be verified")
 	public void the_created_attribute_should_be_verified() {
-	    Assert.assertEquals(it.VerifyFirstRecordName(), "Devops");
+	    Assert.assertEquals(it.GetFirstRecordName(), "Devops");
 	}
 //*********************************Update**********************************************************
-	@When("they select a specific attribute and click on the edit button")
-	public void they_select_a_specific_attribute_and_click_on_the_edit_button() throws InterruptedException {
-		it.ClickOnEditICon();
-		Thread.sleep(2000);
-	}
 	@When("modify the Attribute name")
 	public void modify_the_name() {
 		at=new GAttribute(Browser.driver);
@@ -79,28 +74,17 @@ public class GStepAttributePage
 
 	@Then("the Updated attribute should be verified")
 	public void the_edited_attribute_should_be_verified() {
-		Assert.assertEquals(it.VerifyFirstRecordName(),"Tester");
+		Assert.assertEquals(it.GetFirstRecordName(),"Tester");
 	}
 //**********************************Deletion********************************************************
 	@When("click on the attribute delete button")
 	public void DeleteButton() throws InterruptedException, AWTException{
 		it=new Iterations(Browser.driver);
-		it.KeyBoardEnterKey(1);
+		it.KeyBoardOption("scroll");
 		at=new GAttribute(Browser.driver);
 		at.DeleteButton();
 		it.ClickonOkButton();
 	}
-	@Then("the deleted attribute should be verified")
-	public void the_deleted_attribute_should_be_verified() {
-	    String name=it.VerifyFirstRecordName();
-	    if(name.equalsIgnoreCase("Tester"))
-	    {
-	    	System.out.println("delete is not happen");
-	    }
-	    else
-	    {
-	    	System.out.println("Deleted");
-	    }
-	}
+
 	}
 

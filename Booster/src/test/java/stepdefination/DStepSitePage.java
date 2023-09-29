@@ -40,15 +40,10 @@ public class DStepSitePage {
 	
 	@Then("Verify for the created site")
 	public void VerifyForCreatedSite(){
-	   Assert.assertEquals(it.VerifyFirstRecordName(),"active");
+	   Assert.assertEquals(it.GetFirstRecordName(),"active");
 	}
 	
 //**********************************Update*****************************************
-	@When("select one particular site click on edit icon")
-	public void select_one_particular_site_click_on_edit_icon() throws InterruptedException {
-		it.ClickOnEditICon();
-	    Thread.sleep(3000);
-	}
 
 	@Then("the user on the edit site page")
 	public void the_user_on_the_edit_site_page() {
@@ -65,13 +60,9 @@ public class DStepSitePage {
 
 	@Then("verify is the client-site is get upadted")
 	public void verify_is_the_client_site_is_get_upadted() {
-		Assert.assertEquals(it.VerifyFirstRecordName(), "Devops");
+		Assert.assertEquals(it.GetFirstRecordName(), "Devops");
 	}
-	@Then("the deleted site should be verified")
-	public void VerifyForDeletedAccount()
-	{
-		Assert.assertNotEquals(it.VerifyFirstRecordName(),"Devops");
-	}
+
 	@When("click on the delete button")
 	public void click_on_the_delete_button() throws AWTException, InterruptedException {
 		it=new Iterations(Browser.driver);
@@ -79,10 +70,7 @@ public class DStepSitePage {
 	    
 	   
 	}
-	@Then("the deleted user should be verified")
-	public void the_deleted_camera_should_be_verified() {
-	Assert.assertNotEquals(it.VerifyFirstRecordName(), "Devops");
-	}
+	
 	
 	
 }

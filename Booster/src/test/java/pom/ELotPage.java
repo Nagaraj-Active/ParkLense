@@ -6,12 +6,12 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
 import org.openqa.selenium.WebDriver;
-	import org.openqa.selenium.WebElement;
-	import org.openqa.selenium.support.FindBy;
-	import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import myBrowsers.Browser;
+
 
 	public class ELotPage 
 	{
@@ -59,9 +59,19 @@ import myBrowsers.Browser;
 		@FindBy(xpath="//input[@placeholder='Longitude']")             WebElement longitudeField;
 		@FindBy(xpath="(//input[@type='radio'])[3]")                   WebElement indoor;
 		@FindBy(xpath="(//input[@type='radio'])[4]")                   WebElement outDoor;
-		public void EnterParkingDuration(String dur)
+        @FindBy(xpath = "//input[@placeholder='SW']")                  WebElement swCoordinates;
+        @FindBy(xpath="//input[@placeholder='NE']")                    WebElement neCoordinates;
+		public void EnterParkingDuration(String duration)
 		{
-			parkingDurationfield.sendKeys(dur);
+			parkingDurationfield.sendKeys(duration);
+		}
+		public void EnterOverlayCoordinates(String sw,String ne) throws InterruptedException
+		{
+		  swCoordinates.clear();
+		  swCoordinates.sendKeys(sw);
+		  Thread.sleep(2000);
+		  neCoordinates.clear();
+		  neCoordinates.sendKeys(ne);
 		}
 		public void UploadOverlay()
 		{
@@ -69,30 +79,27 @@ import myBrowsers.Browser;
 		}
 		
 	
-		public void Enterlattitude(String lat)
+		public void EnterlotCoordinates(String lattitude,String longitude) throws InterruptedException
 		{
-			lattitudeField.sendKeys(lat);
-		}
-		public void EnterLongitude(String longitude)
-		{
-			longitudeField.sendKeys(longitude);;
+			lattitudeField.clear();
+			lattitudeField.sendKeys(lattitude);
+			Thread.sleep(2000);
+			longitudeField.clear();
+			longitudeField.sendKeys(longitude);
+			
 		}
 		public void SelectLotLocation(int id)
 		{
-			if(id==2)
-			{
-				outDoor.click();
-			}
+			WebElement Parkloc= (id== 1) ? indoor : outDoor;
+			Parkloc.click();
 		}
 		@FindBy(xpath="(//input[@type='radio'])[5]")WebElement activeStatus;
 		@FindBy(xpath="(//input[@type='radio'])[6]")WebElement inActiveStatus;
 		@FindBy(xpath="//div[@class='table-responsive']//tbody/tr[1]/td[9]//span[2]")WebElement stallsIcon; 
 		public void SelectLotStatus(int id)
 		{
-			if(id==2)
-		{
-				inActiveStatus.click();
-		}
+			WebElement Lotstatus= (id== 1) ? activeStatus :inActiveStatus;
+			Lotstatus.click();
 		}
 		public void ClickOnStallsIcon()
 		{
@@ -104,21 +111,22 @@ import myBrowsers.Browser;
 			Thread.sleep(3000);
 			lotName.clear();
 		}
-		public void uploadLotOverlayImage() throws AWTException, InterruptedException
+		public void uploadLotOverlayImage(String path) throws AWTException, InterruptedException
 	    {
 	       	uploadButton.click();
 	    	
 	    	Robot rob=new Robot();
 	    	rob.delay(2000);
 	    	
-	    	StringSelection copyPath=new StringSelection("/home/active35/Downloads/ac-gayst (6).png");
+	    	StringSelection copyPath=new StringSelection(path);
 	    	Toolkit.getDefaultToolkit().getSystemClipboard().setContents(copyPath, null);
 	    	
 	    	rob.keyPress(KeyEvent.VK_CONTROL);
-	    	rob.keyPress(KeyEvent.VK_V);
+	    	rob.keyPress(KeyEvent.VK_C);
+	    	Thread.sleep(1000);
 	    	rob.keyRelease(KeyEvent.VK_CONTROL);
 	    	rob.keyRelease(KeyEvent.VK_V);
-	    	
+	    	Thread.sleep(1000);
 	    	rob.keyPress(KeyEvent.VK_ENTER);
 	    	rob.keyRelease(KeyEvent.VK_ENTER);
 	    	

@@ -51,30 +51,22 @@ public class EStepLotPage {
 
 	@When("they upload the overlay")
 	public void they_upload_the_overlay() throws AWTException, InterruptedException {
-	  //lp.uploadLotOverlayImage();
+	  lp.uploadLotOverlayImage("/home/active35/Downloads/ac-gayst (6).png");
 	}
 
 	@When("they select the lots location")
 	public void they_select_the_lots_location() {
 	    lp.SelectLotLocation(2);
 	}
-
 	@When("they select the lots status")
 	public void they_select_the_lots_status() {
 	    lp.SelectLotStatus(1);
 	}
-
-	
-
 	@Then("the created Lot should be verified")
 	public void the_created_lot_should_be_verified() {
-	    Assert.assertEquals(it.VerifyFirstRecordName(), "LotA");
+	    Assert.assertEquals(it.GetFirstRecordName(), "LotA");
 	}
 //***********************************************LotUpdate*****************************************************
-	@When("they select a specific Lot and click on the edit button")
-	public void they_select_a_specific_lot_and_click_on_the_edit_button() throws InterruptedException {
-	    it.ClickOnEditICon();
-	}
 
 	@When("modify the lot name")   
 	public void modify_the_lot_name() throws InterruptedException {
@@ -82,21 +74,26 @@ public class EStepLotPage {
 		lp.ClearLotName();
 	   lp.EnterLotName("testerLot");
 	}
-
+	
+	@When("they enter the all coordinates")   
+	public void EnterTheAllCoordinates() throws InterruptedException {
+		lp.EnterlotCoordinates("13", "14");
+		Thread.sleep(4000);
+		lp.EnterOverlayCoordinates("13,14", "14,15");
+	}
+	
 	@Then("the edited Lot should be verified")
 	public void the_edited_lot_should_be_verified() {
-		Assert.assertEquals(it.VerifyFirstRecordName(), "testerLot"); 
+		Assert.assertEquals(it.GetFirstRecordName(), "testerLot"); 
 	}
-	@Then("the deleted Lot should be verified")
-	public void deletedLotShouldBeVerified() {
-		Assert.assertNotEquals(it.VerifyFirstRecordName(), "testerLot"); 
-	}
+//**********************************************Delete*********************************************
 	@When("click on the lot delete button")
 	public void LotDeleting() throws AWTException, InterruptedException {
-		it.KeyBoardEnterKey(1);
+		it.KeyBoardOption("scroll");
 		it.ClickOnLotDeleteButton();
 	    
 	}
+
 	
 	
 	

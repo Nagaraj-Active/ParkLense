@@ -1,5 +1,7 @@
 package pom;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,13 +32,64 @@ public WebDriver driver;
     @FindBy(xpath="(//button[@class='input-group-text'])[1]")            WebElement clientStartDate;
     @FindBy(xpath="(//button[@class='input-group-text'])[2]")            WebElement clientEndDate;
     @FindBy(xpath="(//div[@class='table-responsive']//tbody/tr/td[3])[1]")         WebElement clientFirstRecordName;
+    @FindBy(xpath="//div[@class='ngb-dp-month']//div[@role='gridcell']")  List<WebElement> datesLink;
+    @FindBy(xpath="//select[@title='Select month']") WebElement monthDropdown;
+    @FindBy(xpath="//select[@title='Select year']")  WebElement yearDropDown;
+    @FindBy(xpath="//div[@class='btn-light']")       List<WebElement> days_dropdown;
+   
+    public void selectDate(String year, String month, String date, int sd_OR_ed) {
+       
+    	WebElement dateField = (sd_OR_ed == 1) ? clientStartDate : clientEndDate;
+        dateField.click();
+        
+ 		Select years=new Select(yearDropDown);
+ 		Select months=new Select(monthDropdown);
+ 		years.selectByVisibleText(year);
+ 		months.selectByVisibleText(month);
+ 		for(WebElement a:datesLink)
+ 		{
+ 			if(a.getText().equals(date))
+ 			{
+ 				a.click();
+ 				break;
+ 			}
+ 		}
+//*********************************DatePicker method********************************************* 		
+//	     String[] dateParts = desiredDate.split("/");
+//	     String year = dateParts[0];
+//	     String month = dateParts[1];
+//	     String day = dateParts[2];
+//	   
+//	     year_dropdown.sendKeys(year);
+//	     month_dropdown.sendKeys(month);
+//	     int daysize=days_dropdown.size();
+//	     for(int d=0;d<daysize-1;d++)
+//	     {
+//	    	 WebElement days=days_dropdown.get(d);
+//	    	 String getdaytext=days.getText();
+//	    	
+//	    	 if(getdaytext.equals(day))
+//	    	 {
+//	             days.click(); 
+//	             break;
+//	    	 }
+//}
+ //************************************************************************************************		
+ 	}
+    public void SelectStartEndDate()
+    {
+    	clientStartDate.click();
+    	
+    }
     public String FeatchFirstRecordName()
     {
  	   String name=clientFirstRecordName.getText();
  	   return name;
     }
-    public void ClickOnClientStartDate()
+    public void ClickOnClientStartDate() throws InterruptedException
     {
+    	Thread.sleep(2000);
+    	
     	clientStartDate.click();
     }
     public void ClickOnClientEndDate() 

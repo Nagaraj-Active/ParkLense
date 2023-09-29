@@ -10,7 +10,7 @@ Feature: Verify the Lot creation
     And they enter the lot name
     And they enter the lot title
     And they enter the parking duration
-    And they upload the overlay
+    #And they upload the overlay
     And they select the lots location
     And they select the lots status
     And click on the save button

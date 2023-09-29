@@ -1,9 +1,9 @@
 package stepdefination;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.*;
-import junit.framework.Assert;
 import myBrowsers.Browser;
 import pom.ALogin;
 

@@ -90,12 +90,16 @@ public class BStepClientPage
 		}
 		@When("they select the client start date and end date")
 		public void SelectCLientDate() throws InterruptedException {
-			it=new Iterations(Browser.driver);
-		     cb.ClickOnClientStartDate();
-		     it.DatePicker("2023/Oct/01");
-		     Thread.sleep(4000);
-		     cb.ClickOnClientEndDate();
-		     it.DatePicker("2023/Oct/21");
+			cb.selectDate("2024","Oct","12",1);
+			Thread.sleep(5000);
+			cb.selectDate("2024", "Oct","12",2);
+//****************************************datePicker***********************************************			
+//			it=new Iterations(Browser.driver);
+//			cb.ClickOnClientStartDate();
+//		    it.DatePicker("2023/Oct/01");
+//		     cb.ClickOnClientEndDate();
+//		     it.DatePicker("2023/Oct/21")
+//*************************************************************************************************
 		}
 
 		@When("they select Status from the client status dropdown")
@@ -116,12 +120,16 @@ public class BStepClientPage
 		Assert.assertEquals(cb.FeatchFirstRecordName(),"ClientB");
 		} 
 //*********************************Updating**************************	 
-		@When("select one particular user click on edit icon")
-		public void ClickOnClientEditLink() throws InterruptedException {
-			it=new Iterations(Browser.driver); 
-			it.ClickOnEditICon();
-		}
-		@When("the user on the edit client page")
+//		String id;
+//		@When("select one particular user click on edit icon")
+//		public void ClickOnClientEditLink() throws InterruptedException, AWTException {
+//			it=new Iterations(Browser.driver); 
+//           	it.SearchField("55");
+//            id=it.GetFirstRecordId();
+//			it.ClickOnEditICon();
+//            
+//		}
+		@When("select one perticular client record and click on edit icon")
 		public void VerifyUserIsOnTheClientEditPage()  {
 			Assert.assertEquals(it.VerifyCurrentPageText(),"Edit Client"); 
 		}

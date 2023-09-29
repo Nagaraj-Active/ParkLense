@@ -83,7 +83,7 @@ public class CStepUser
 	@Then("the created Client-User should be displayed on the client page")
 	public void VerifyCreatedUser()
 	{
-		Assert.assertEquals(it.VerifyFirstRecordName(), "UserA");
+		Assert.assertEquals(it.GetFirstRecordName(), "UserA");
 	}
 //*****************************************************************UpdateUser*******************************************************************	
 
@@ -100,6 +100,17 @@ public void they_update_the_client_user_name()throws InterruptedException {
 	up.EnterNewUserName("devops");
 }
 
+String id;
+@When("select one particular record and click on edit icon")
+public void ClickOnClientEditLink() throws InterruptedException, AWTException {
+	it=new Iterations(Browser.driver); 
+	Thread.sleep(4000);
+	id=it.GetFirstRecordId();
+	it.SearchField(id);
+	it.ClickOnEditICon();
+//	System.out.println(id);
+    
+}
 @When("they update the user-mobile number")
 public void they_update_the_user_mobile_number() throws InterruptedException {
 	up.ClearExistingMobileNumber();
@@ -115,9 +126,15 @@ public void they_update_the_user_email() {
 
 @Then("verify is the client-User is get upadted")
 public void verify_is_the_client_user_is_get_upadted() {
-	Assert.assertEquals(it.VerifyFirstRecordName(), "devops");
+	Assert.assertEquals(it.GetFirstRecordName(), "devops");
 }
-
+//******************************Delete**********************************************************
+@Then("the deleted record should be verified")
+public void the_deleted_camera_should_be_verified() throws InterruptedException, AWTException {
+	Thread.sleep(4000);
+	it.SearchField(id);
+    Assert.assertNotEquals(it.GetFirstRecordId(),id);
+}
 
 
 }

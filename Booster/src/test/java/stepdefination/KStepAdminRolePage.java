@@ -44,7 +44,7 @@ public class KStepAdminRolePage
 	   ar=new SAdminRole(Browser.driver);
 		ar.EnterPermissionTitle("amaz");
 		Thread.sleep(4000);
-		it.KeyBoardEnterKey(1);
+		it.KeyBoardOption("scroll");
 		Thread.sleep(2000);
 	
 	}
@@ -56,7 +56,7 @@ public class KStepAdminRolePage
 	    cr=new IClientRole(Browser.driver);
 	    cr.ClickOnDescButton();
 	    it=new Iterations(Browser.driver);
-		Assert.assertEquals(it.VerifyFirstRecordName(),"amaz");
+		Assert.assertEquals(it.GetFirstRecordName(),"amaz");
 	}
 	//******************************************************************Update***********************************************************************
 	@When("they select a specific admin-role and click on the edit button")
@@ -65,14 +65,14 @@ public class KStepAdminRolePage
 		cr.ClickOnDescButton();
 		it.ClickOnEditICon();
 		Thread.sleep(3000);
-		 it.KeyBoardEnterKey(1);
+		it.KeyBoardOption("scroll");
 	}
 
 	@Then("the edited role should be verified")
 	  	public void the_edited_lot_should_be_verified() throws InterruptedException {
 		Thread.sleep(2000);
 		cr.ClickOnDescButton();	
-		Assert.assertEquals(it.VerifyFirstRecordName(), "amaz"); 
+		Assert.assertEquals(it.GetFirstRecordName(), "amaz"); 
 	  	}
 	
 //**********************************************AdminDelete******************************************	
@@ -80,7 +80,7 @@ public class KStepAdminRolePage
 	public void ClickOnDeleteButton() throws AWTException, InterruptedException {
 	   av=new HAttributeValue(Browser.driver);
 	   ar=new SAdminRole(Browser.driver);
-	   it.KeyBoardEnterKey(1);
+	   it.KeyBoardOption("scroll");
 	   av.ClickOnDeleteButton();
 		it=new Iterations(Browser.driver);
 	   
@@ -88,7 +88,7 @@ public class KStepAdminRolePage
 	@Then("the deleted admin-role should be verified")
   	public void VerifyAdminRole() {
 		cr.ClickOnDescButton();
-  		Assert.assertNotEquals(it.VerifyFirstRecordName(), "amaz"); 
+  		Assert.assertNotEquals(it.GetFirstRecordName(), "amaz"); 
   	}
 	
 	

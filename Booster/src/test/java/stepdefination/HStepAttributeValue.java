@@ -59,7 +59,7 @@ public class HStepAttributeValue
 
 	@When("select the client from drop down")
 	public void select_the_client_from_drop_down() throws InterruptedException, AWTException {
-		it.KeyBoardEnterKey(1);
+		it.KeyBoardOption("scroll");
 		av=new HAttributeValue(Browser.driver);
 		av.ClickOnClientdrop();
 		Thread.sleep(2000);
@@ -71,27 +71,12 @@ public class HStepAttributeValue
 	 Assert.assertEquals(av.VerifyAvName(),"Devops");
 	}
 
-	@When("they select a specific attributeValue and click on the edit button")
-	public void they_select_a_specific_attribute_value_and_click_on_the_edit_button() {
-	   it.ClickOnEditICon();
-	}
 	@Then("the edited attribute should be verified")
 	public void VerifyingAttributeValueName(){
 	 Assert.assertEquals(av.VerifyAvName(),"Devops");
 	}
 
 //**********************************************Delete******************************************
-	@Then("the deleted attributevalue should be verified")
-	public void the_deleted_attributevalue_should_be_verified() {
-	   String verify=av.VerifyAvName();
-		if(verify.equalsIgnoreCase("Tester"))
-	   {
-		   System.out.println("Not deleted");
-	   }
-		else
-		{
-			System.out.println("is deleted");
-		}
-	}
+
 
 }

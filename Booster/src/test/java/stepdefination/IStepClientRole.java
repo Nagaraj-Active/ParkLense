@@ -79,7 +79,7 @@ public class IStepClientRole
 	public void the_created_client_role_should_be_verified() throws InterruptedException {
 		Thread.sleep(5000);
 		cr.ClickOnDescButton();
-		Assert.assertEquals(it.VerifyFirstRecordName(),"officer");
+		Assert.assertEquals(it.GetFirstRecordName(),"officer");
 	}
 
 	@When("they select a specific client-role and click on the edit button")
@@ -100,13 +100,13 @@ public class IStepClientRole
 	public void the_edited_client_role_should_be_verified() throws InterruptedException {
 		Thread.sleep(6000);
 		cr.ClickOnDescButton();
-		Assert.assertEquals(it.VerifyFirstRecordName(),"tester"); 
+		Assert.assertEquals(it.GetFirstRecordName(),"tester"); 
 	}
 
 	@Then("the deleted client-role should be verified")
 	public void the_deleted_client_role_should_be_verified() {
 	    cr.ClickOnDescButton();
-	    String name=it.VerifyFirstRecordName();
+	    String name=it.GetFirstRecordName();
 	    if(name.equalsIgnoreCase("tester"))
 	    {
 	    	System.out.println("deletion is not happen");

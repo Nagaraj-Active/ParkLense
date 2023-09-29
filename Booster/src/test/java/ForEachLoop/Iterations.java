@@ -63,7 +63,7 @@ public class Iterations
    public void ClickOnSaveButton() throws AWTException, InterruptedException
    {
 
-		KeyBoardEnterKey(1);
+		KeyBoardOption("scroll");
 		Thread.sleep(2000);
         saveButton.click();
      	ClickonOkButton();
@@ -71,11 +71,11 @@ public class Iterations
    public void ClickOnCancelButton() throws AWTException, InterruptedException
    {
    	cancelButton.click();
-   	KeyBoardEnterKey(2);
+   	KeyBoardOption("");
    }
-    public void KeyBoardEnterKey(int id) throws AWTException, InterruptedException
+    public void KeyBoardOption(String a) throws AWTException, InterruptedException
    {
-    if(id==1)
+    if(a.equalsIgnoreCase("scroll"))
     {
     	Robot rt=new Robot();
 		rt.keyPress(KeyEvent.VK_DOWN);
@@ -88,33 +88,8 @@ public class Iterations
    	rb.keyPress(KeyEvent.VK_ENTER);
    	rb.keyRelease(KeyEvent.VK_ENTER);
    }}
-//*************************************For Picking Date*************************************************
-   @FindBy(xpath="//select[@title='Select month']") WebElement month_dropdown;
-   @FindBy(xpath="//select[@title='Select year']")  WebElement year_dropdown;
-   @FindBy(xpath="//div[@class='btn-light']")       List<WebElement> days_dropdown;
-  public void DatePicker(String desiredDate)
-	{
-		 
-	     String[] dateParts = desiredDate.split("/");
-	     String year = dateParts[0];
-	     String month = dateParts[1];
-	     String day = dateParts[2];
-	   
-	     year_dropdown.sendKeys(year);
-	     month_dropdown.sendKeys(month);
-	     int daysize=days_dropdown.size();
-	     for(int d=0;d<daysize-1;d++)
-	     {
-	    	 WebElement days=days_dropdown.get(d);
-	    	 String getdaytext=days.getText();
-	    	
-	    	 if(getdaytext.equals(day))
-	    	 {
-	             days.click(); 
-	             break;
-	    	 }
-	     }
-	}
+
+   
 //*********************************************CLient Drop Down***********************************************
   @FindBy (xpath = "(//select[@formcontrolname='DropdownControl'])[1]") WebElement clientDrop;
   public void SelectClient(String name)
@@ -134,13 +109,18 @@ public class Iterations
     {
 	  
     }
+  @FindBy(xpath="//input[@placeholder='Search By Name']/../following-sibling::div[1]//tbody/tr[1]/td[1]")      WebElement featchFirstRecordId;//Except client
   @FindBy(xpath="//input[@placeholder='Search By Name']/../following-sibling::div[1]//tbody/tr[1]/td[2]")        WebElement featchFirstRecordName;   //Except client and attributeValue
-   public String VerifyFirstRecordName()
+   public String GetFirstRecordName()
    {
-	   String id=featchFirstRecordName.getText();
+	   String name=featchFirstRecordName.getText();
+	   return name;
+   }
+   public String GetFirstRecordId()
+   {
+	   String id=featchFirstRecordId.getText();
 	   return id;
    }
-  
 //********************************************Edit icon And Search text field*********************************************************************
    @FindBy(xpath ="(//span[@class='btn-sm-gray3 edit'])[1]")                      WebElement editIcon; 
       @FindBy (xpath="//input[@placeholder='Search By Name']")						  WebElement searchField;
@@ -150,30 +130,17 @@ public class Iterations
    {
 	   cameraNewButton.click();
    } 
-   public boolean VerifyNewButon()
-   {
-	   boolean verify=newButton.isEnabled();
-	   return verify;
-   }
-   public boolean VerifyEditIcon()
-   {
-	   boolean verify=editIcon.isEnabled();
-	   return verify;
-   }
+
    public void ClickOnNewButton()
    {
 	   newButton.click();
    }
 
    public void ClickOnEditICon() 
-   {
+   { 
 	  editIcon.click();
    }
-   public boolean SearchFieldisEnabled()
-   {
-	   boolean verify=searchField.isEnabled();
-	   return verify;
-   }
+  
    public void SearchField(String id) throws AWTException, InterruptedException
    {
        searchField.sendKeys(id);
@@ -292,7 +259,7 @@ public class Iterations
    @FindBy (xpath="(//button[@type='button'])[1]")WebElement deleteButton;//Except Camera
    public void ClickOnDeleteButton() throws AWTException, InterruptedException
    { 
-	  KeyBoardEnterKey(1);
+	  KeyBoardOption("scroll");
 	  deleteButton.click();
 	  okButton.click();
    }

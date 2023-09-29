@@ -5,8 +5,7 @@ Scenario: Verify the Updation Of Client
     Given the user launches the application
     When they log in to their account
     When they click on the Client link
-    And select one particular user click on edit icon
-    Then the user on the edit client page
+    And select one perticular client record and click on edit icon
     When they update the client name
     And they update the mobile number
     And they update the email

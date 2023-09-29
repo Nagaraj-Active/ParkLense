@@ -4,7 +4,7 @@ Feature: Updating the Existing site
     Given the user launches the application
     When they log in to their account
     When they click on the site link
-    And select one particular site click on edit icon
+    And select one particular record and click on edit icon
     Then the user on the edit site page
     When they update the site name
     And click on the save button
